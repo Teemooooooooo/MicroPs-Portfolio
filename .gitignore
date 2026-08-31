@@ -1,0 +1,3 @@
+# ignore quarto rendered materials
+/.quarto/
+/_site/

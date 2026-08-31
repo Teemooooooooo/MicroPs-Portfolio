@@ -1,0 +1,19 @@
+---
+title: "E155 Portfolio"
+image: images/headshot.jpg
+about: 
+    template: jolla
+    links: 
+        - icon: linkedin
+          text: Linkedin
+          href: https://www.linkedin.com/in/ellen-jinghe-yu/
+        - icon: github
+          text: GitHub
+          href: https://github.com/Teemooooooooo
+---
+
+Ellen Yu is an Engineering student at [Harvey Mudd College](https://hmc.edu). 
+
+
+No one asked for this but this is a picture of my dog he is shedding right now
+![](images/dog.jpg)
