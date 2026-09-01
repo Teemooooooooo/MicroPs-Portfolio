@@ -1,12 +1,20 @@
 ---
-title: "Hello Quarto"
-description: "Welcome to my Quarto portfolio"
+title: "First Post: Goals of the Semester"
+description: "Listing the goals..."
 author: "Ellen Yu"
 date: "8/31/26"
 categories:
   - reflection
-  - labreport
 draft: false
 --- 
 
-just space holder
+Hi! This is going to be my first post on the Blog! 
+I am hoping to experiment more about how to design as well as use microprocessors to build cool things. Time to pick up all the System Verilog syntax that left my brain right after E85...
+
+Some goals of this semester include:
+
+Getting more familiar with Git/Github
+
+Write better styled code
+
+Try to build something fun!

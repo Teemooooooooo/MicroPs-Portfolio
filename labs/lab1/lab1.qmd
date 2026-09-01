@@ -1,0 +1,12 @@
+---
+title: "Lab 1 - Board Assembly and Testing"
+description: "Where everything first begins!"
+author: "Ellen Yu"
+date: "9/1/26"
+categories:
+  - reflection
+  - labreport
+draft: false
+--- 
+
+just space holder
