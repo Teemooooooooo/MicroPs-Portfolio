@@ -2,9 +2,23 @@
   {
     "objectID": "posts/first-post.html",
     "href": "posts/first-post.html",
-    "title": "Hello Quarto",
+    "title": "First Post: Goals of the Semester",
     "section": "",
-    "text": "just space holder"
+    "text": "Hi! This is going to be my first post on the Blog! I am hoping to experiment more about how to design as well as use microprocessors to build cool things. Time to pick up all the System Verilog syntax that left my brain right after E85…\nSome goals of this semester include:\nGetting more familiar with Git/Github\nWrite better styled code\nTry to build something fun!"
+  },
+  {
+    "objectID": "lab.html",
+    "href": "lab.html",
+    "title": "E155 Labs",
+    "section": "",
+    "text": "About this site\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLab 1 - Board Assembly and Testing\n\n\nWhere everything first begins!\n\n\n\n\n\nSep 1, 2026\n\n\nEllen Yu\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "E155 Blog",
+    "section": "",
+    "text": "About this site\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFirst Post: Goals of the Semester\n\n\nListing the goals…\n\n\n\n\n\nAug 31, 2026\n\n\nEllen Yu\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
@@ -14,10 +28,10 @@
     "text": "Ellen Yu is an Engineering student at Harvey Mudd College. She is interested in hardware design. In her free time, she likes to draw and work on her world building project.\nNo one asked for this but this is a picture of my dog he is shedding right now"
   },
   {
-    "objectID": "blog.html",
-    "href": "blog.html",
-    "title": "E155 Blog",
+    "objectID": "labs/lab1/lab1.html",
+    "href": "labs/lab1/lab1.html",
+    "title": "Lab 1 - Board Assembly and Testing",
     "section": "",
-    "text": "About this site\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHello Quarto\n\n\nWelcome to my Quarto portfolio\n\n\n\n\n\nAug 31, 2026\n\n\nEllen Yu\n\n\n\n\n\nNo matching items"
+    "text": "just space holder"
   }
 ]
