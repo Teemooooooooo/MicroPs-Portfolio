@@ -1,3 +1,4 @@
 # ignore quarto rendered materials
 /.quarto/
 /_site/
+**/*.quarto_ipynb
