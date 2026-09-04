@@ -7,4 +7,4 @@ listing:
   categories: false
 ---
 
-About this site
+Here are the blog posts through out the course! 
