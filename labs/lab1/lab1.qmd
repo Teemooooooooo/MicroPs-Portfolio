@@ -1,6 +1,6 @@
 ---
 title: "Lab 1 - Board Assembly and Testing"
-description: "Where everything first begins!"
+description: "Hardest thing turns out to be computer not connecting to hardware..."
 author: "Ellen Yu"
 date: "9/1/26"
 categories:
@@ -8,5 +8,24 @@ categories:
   - labreport
 draft: false
 --- 
+## Introduction
+The design for this lab has the following features:
 
-just space holder
++ 4 switch inputs that control 2 LEDs and a 7 segment display
+
++ An LED that blinks at 2.4 Hz, controlled by HSOSC (onboard high-speed oscillator) that has a frequency of 48 MHz.
+
+The four switches are viewed as 4 bits and the seven segment display shows the hexadecimal representation of the 4 bits. 
+## Design and Testing Methodology
+
+## Technical Documentation
+
+### Block Diagram
+
+### Schematic
+
+## Result and Discussion
+
+## Conclusion
+
+## AI Prototype summary
