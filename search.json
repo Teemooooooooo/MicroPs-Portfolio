@@ -11,7 +11,7 @@
     "href": "lab.html",
     "title": "E155 Labs",
     "section": "",
-    "text": "Here lists the lab reports of MicroPs.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLab 1 - Board Assembly and Testing\n\n\nWhere everything first begins!\n\n\n\n\n\nSep 1, 2026\n\n\nEllen Yu\n\n\n\n\n\nNo matching items"
+    "text": "Here lists the lab reports of MicroPs.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLab 1 - Board Assembly and Testing\n\n\nHardest thing turns out to be computer not connecting to hardware…\n\n\n\n\n\nSep 1, 2026\n\n\nEllen Yu\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "blog.html",
@@ -32,6 +32,41 @@
     "href": "labs/lab1/lab1.html",
     "title": "Lab 1 - Board Assembly and Testing",
     "section": "",
-    "text": "just space holder"
+    "text": "The design for this lab has the following features:\n\n4 switch inputs that control 2 LEDs and a 7 segment display\nAn LED that blinks at 2.4 Hz, controlled by HSOSC (onboard high-speed oscillator) that has a frequency of 48 MHz.\n\nThe four switches are viewed as 4 bits and the seven segment display shows the hexadecimal representation of the 4 bits. ## Design and Testing Methodology"
+  },
+  {
+    "objectID": "labs/lab1/lab1.html#introduction",
+    "href": "labs/lab1/lab1.html#introduction",
+    "title": "Lab 1 - Board Assembly and Testing",
+    "section": "",
+    "text": "The design for this lab has the following features:\n\n4 switch inputs that control 2 LEDs and a 7 segment display\nAn LED that blinks at 2.4 Hz, controlled by HSOSC (onboard high-speed oscillator) that has a frequency of 48 MHz.\n\nThe four switches are viewed as 4 bits and the seven segment display shows the hexadecimal representation of the 4 bits. ## Design and Testing Methodology"
+  },
+  {
+    "objectID": "labs/lab1/lab1.html#technical-documentation",
+    "href": "labs/lab1/lab1.html#technical-documentation",
+    "title": "Lab 1 - Board Assembly and Testing",
+    "section": "Technical Documentation",
+    "text": "Technical Documentation\n\nBlock Diagram\n\n\nSchematic"
+  },
+  {
+    "objectID": "labs/lab1/lab1.html#result-and-discussion",
+    "href": "labs/lab1/lab1.html#result-and-discussion",
+    "title": "Lab 1 - Board Assembly and Testing",
+    "section": "Result and Discussion",
+    "text": "Result and Discussion"
+  },
+  {
+    "objectID": "labs/lab1/lab1.html#conclusion",
+    "href": "labs/lab1/lab1.html#conclusion",
+    "title": "Lab 1 - Board Assembly and Testing",
+    "section": "Conclusion",
+    "text": "Conclusion"
+  },
+  {
+    "objectID": "labs/lab1/lab1.html#ai-prototype-summary",
+    "href": "labs/lab1/lab1.html#ai-prototype-summary",
+    "title": "Lab 1 - Board Assembly and Testing",
+    "section": "AI Prototype summary",
+    "text": "AI Prototype summary"
   }
 ]
