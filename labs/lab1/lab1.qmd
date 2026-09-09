@@ -72,9 +72,11 @@ There is one testbench for each module to verify that the design met all intende
 ![Waveform simulation of counter module with all tests passing](images/counter2){#fig-sim_counter_tests}
 
 ![Waveform simulation of counter module at maximum counter behavior](images/counter1){#fig-sim_counter_max}
+
+![Waveform simulation including counter at maximum counter behavior](images/counter_sim){#fig-sim_counter}
 :::
 
-The waveform simulation and test results of the flash LED module (flash_led) is shown in @fig-sim_counter_tests and @fig-sim_counter_max. This testbench cover the reset behavior, enable behavior, and the behavior at counter maximum threshold. The DUT exhibit expected behavior for all test cases. 
+The waveform simulation and test results of the flash LED module (flash_led) is shown in @fig-sim_counter_tests, @fig-sim_counter and @fig-sim_counter_max. This testbench cover the reset behavior, enable behavior, and the behavior at counter maximum threshold. The DUT exhibit expected behavior for all test cases. 
 
 ::: {.callout-note collapse="true"}
 ## seven-segment waveform
