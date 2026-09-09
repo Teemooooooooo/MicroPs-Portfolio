@@ -1,14 +1,15 @@
 [
   {
-    "listing": "/lab.html",
+    "listing": "/blog.html",
     "items": [
-      "/labs/lab1/lab1.html"
+      "/posts/first-lab.html",
+      "/posts/first-post.html"
     ]
   },
   {
-    "listing": "/blog.html",
+    "listing": "/lab.html",
     "items": [
-      "/posts/first-post.html"
+      "/labs/lab1/lab1.html"
     ]
   }
 ]

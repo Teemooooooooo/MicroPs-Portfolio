@@ -2,22 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://Teemooooooooo.github.io/MicroPs-Portfolio/posts/first-post.html</loc>
-    <lastmod>2026-09-01T19:54:05.219Z</lastmod>
+    <lastmod>2026-09-09T05:14:50.460Z</lastmod>
   </url>
   <url>
-    <loc>https://Teemooooooooo.github.io/MicroPs-Portfolio/lab.html</loc>
-    <lastmod>2026-09-04T16:29:40.271Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Teemooooooooo.github.io/MicroPs-Portfolio/blog.html</loc>
-    <lastmod>2026-09-04T16:30:03.725Z</lastmod>
+    <loc>https://Teemooooooooo.github.io/MicroPs-Portfolio/labs/lab1/lab1.html</loc>
+    <lastmod>2026-09-09T04:58:47.240Z</lastmod>
   </url>
   <url>
     <loc>https://Teemooooooooo.github.io/MicroPs-Portfolio/index.html</loc>
     <lastmod>2026-09-09T02:40:35.485Z</lastmod>
   </url>
   <url>
-    <loc>https://Teemooooooooo.github.io/MicroPs-Portfolio/labs/lab1/lab1.html</loc>
-    <lastmod>2026-09-09T04:58:47.240Z</lastmod>
+    <loc>https://Teemooooooooo.github.io/MicroPs-Portfolio/blog.html</loc>
+    <lastmod>2026-09-04T16:30:03.725Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Teemooooooooo.github.io/MicroPs-Portfolio/lab.html</loc>
+    <lastmod>2026-09-09T05:13:09.261Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Teemooooooooo.github.io/MicroPs-Portfolio/posts/first-lab.html</loc>
+    <lastmod>2026-09-09T05:17:51.148Z</lastmod>
   </url>
 </urlset>

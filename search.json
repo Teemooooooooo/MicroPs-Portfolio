@@ -4,28 +4,7 @@
     "href": "posts/first-post.html",
     "title": "First Post: Goals of the Semester",
     "section": "",
-    "text": "Hi! This is going to be my first post on the Blog! I am hoping to experiment more about how to design as well as use microprocessors to build cool things. Time to pick up all the System Verilog syntax that left my brain right after E85…\nSome goals of this semester include:\nGetting more familiar with Git/Github\nWrite better styled code\nTry to build something fun!"
-  },
-  {
-    "objectID": "lab.html",
-    "href": "lab.html",
-    "title": "E155 Labs",
-    "section": "",
-    "text": "Here lists the lab reports of MicroPs.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLab 1 - Board Assembly and Testing\n\n\nHardest thing turns out to be computer not connecting to hardware…\n\n\n\n\n\nSep 1, 2026\n\n\nEllen Yu\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "blog.html",
-    "href": "blog.html",
-    "title": "E155 Blog",
-    "section": "",
-    "text": "Here are the blog posts through out the course!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFirst Post: Goals of the Semester\n\n\nListing the goals…\n\n\n\n\n\nAug 31, 2026\n\n\nEllen Yu\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "E155 Portfolio",
-    "section": "",
-    "text": "Ellen Yu is an Engineering student at Harvey Mudd College focusing on Electrical and Computer Engineering. Her interests are in processor architecture, hardware design, and verification. As both an engineer and an artist, she enjoys transforming ideas into thoughtful, functional products.\nWhile you are here, this is a picture of my dog! He is shedding right now"
+    "text": "Hi! This is going to be my first post on the Blog! I am hoping to experiment more about how to design as well as use microprocessors to build cool things. Time to pick up all the System Verilog syntax that left my brain right after E85…\n\nSome goals of this semester include:\nGetting more familiar with Git/Github\nWrite better styled code\nTry to build something fun!"
   },
   {
     "objectID": "labs/lab1/lab1.html",
@@ -75,5 +54,82 @@
     "title": "Lab 1 - Board Assembly and Testing",
     "section": "AI Prototype summary",
     "text": "AI Prototype summary\n\n\n\n\n\n\nNoteCode produced by AI\n\n\n\n\n\n// Top module name must match your project configuration: led_blink\nmodule led_blink (\n    output logic led\n);\n\n    logic clk_48m;\n\n    // Lattice Radiant Primitive for the High Speed Oscillator\n    HSOSC #(\n        .CLKHF_DIV(\"0b00\")  // \"0b00\" = 48 MHz, \"0b01\" = 24 MHz, \"0b10\" = 12 MHz, \"0b11\" = 6 MHz\n    ) hfosc_inst (\n        .CLKHFPU(1'b1),    // Power up oscillator\n        .CLKHFEN(1'b1),    // Enable clock output\n        .CLKHF  (clk_48m)  // Output clock signal\n    );\n\n    // 48,000,000 Hz / (2 * 2 Hz) = 12,000,000 cycles per toggle\n    localparam int TOGGLE_LIMIT = 12_000_000;\n   \n    logic [$clog2(TOGGLE_LIMIT)-1:0] counter = '0;\n\n    always_ff @(posedge clk_48m) begin\n        if (counter == TOGGLE_LIMIT - 1) begin\n            counter &lt;= '0;\n            led     &lt;= ~led;\n        end else begin\n            counter &lt;= counter + 1'b1;\n        end\n    end\n\nendmodule\n\n\n\nI used Gemini to produce this code. I would say that the quality of the code is very luck dependent. When I tried to do it with AI for the first time, it did not synthesize properly even when I fed the error message back into the LLM for 5 times. After I started a new chat, it made synthesizable code within 2 tries. The ’0 part of the code that AI generated is new to me. The code did not synthesize for the first time because it had issue with the HFOSC naming that is specific to the Lattice Radiant software. Radiant outputs “ERROR &lt;35901063&gt; - ../source/impl_1/led_blink.sv(18): instantiating unknown module SB_HFOSC. VERI-1063”. I would let the LLM know what software I am working with first if I use LLM in my workflow."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "E155 Portfolio",
+    "section": "",
+    "text": "Ellen Yu is an Engineering student at Harvey Mudd College focusing on Electrical and Computer Engineering. Her interests are in processor architecture, hardware design, and verification. As both an engineer and an artist, she enjoys transforming ideas into thoughtful, functional products.\nWhile you are here, this is a picture of my dog! He is shedding right now"
+  },
+  {
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "E155 Blog",
+    "section": "",
+    "text": "Here are the blog posts through out the course!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAfter the First Lab: New Goals of the Semester\n\n\nOkay I need to rethink my goals…\n\n\n\n\n\nSep 8, 2026\n\n\nEllen Yu\n\n\n\n\n\n\n\n\n\n\n\n\nFirst Post: Goals of the Semester\n\n\nListing the goals…\n\n\n\n\n\nAug 31, 2026\n\n\nEllen Yu\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "lab.html",
+    "href": "lab.html",
+    "title": "E155 Labs",
+    "section": "",
+    "text": "Here lists the lab reports of MicroPs."
+  },
+  {
+    "objectID": "lab.html#lab-1---board-assembly-and-testing",
+    "href": "lab.html#lab-1---board-assembly-and-testing",
+    "title": "E155 Labs",
+    "section": "Lab 1 - Board Assembly and Testing",
+    "text": "Lab 1 - Board Assembly and Testing"
+  },
+  {
+    "objectID": "lab.html#lab-2---multiplexed-7-segment-display",
+    "href": "lab.html#lab-2---multiplexed-7-segment-display",
+    "title": "E155 Labs",
+    "section": "Lab 2 - Multiplexed 7-Segment Display",
+    "text": "Lab 2 - Multiplexed 7-Segment Display"
+  },
+  {
+    "objectID": "lab.html#lab-3---keypad-scanner",
+    "href": "lab.html#lab-3---keypad-scanner",
+    "title": "E155 Labs",
+    "section": "Lab 3 - Keypad Scanner",
+    "text": "Lab 3 - Keypad Scanner"
+  },
+  {
+    "objectID": "lab.html#lab-4---digital-audio",
+    "href": "lab.html#lab-4---digital-audio",
+    "title": "E155 Labs",
+    "section": "Lab 4 - Digital Audio",
+    "text": "Lab 4 - Digital Audio"
+  },
+  {
+    "objectID": "lab.html#lab-5---interrupts",
+    "href": "lab.html#lab-5---interrupts",
+    "title": "E155 Labs",
+    "section": "Lab 5 - Interrupts",
+    "text": "Lab 5 - Interrupts"
+  },
+  {
+    "objectID": "lab.html#lab-6---the-internet-of-things-and-serial-peripheral-interface",
+    "href": "lab.html#lab-6---the-internet-of-things-and-serial-peripheral-interface",
+    "title": "E155 Labs",
+    "section": "Lab 6 - The Internet of Things and Serial Peripheral Interface",
+    "text": "Lab 6 - The Internet of Things and Serial Peripheral Interface"
+  },
+  {
+    "objectID": "lab.html#lab-7---the-advanced-encryption-standard-aes",
+    "href": "lab.html#lab-7---the-advanced-encryption-standard-aes",
+    "title": "E155 Labs",
+    "section": "Lab 7 - The Advanced Encryption Standard (AES)",
+    "text": "Lab 7 - The Advanced Encryption Standard (AES)"
+  },
+  {
+    "objectID": "posts/first-lab.html",
+    "href": "posts/first-lab.html",
+    "title": "After the First Lab: New Goals of the Semester",
+    "section": "",
+    "text": "Yay! I am writing this blog right after I finished by lab report for by first lab! After spending around 30 hours on that lab I decided that the most important goal of this semester is going to be TRY TO DEFEND MY 8 HOURS OF SLEEP EVERY NIGHT\nGoing to try to start looking at the next lab and try to come up with an estimation of how long it will take!"
   }
 ]
