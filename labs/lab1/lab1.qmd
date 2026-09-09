@@ -71,12 +71,57 @@ There is one testbench for each module to verify that the design met all intende
 ## counter waveform
 ![Waveform simulation of counter module with all tests passing](images/counter2){#fig-sim_counter_tests}
 
-![Waveform simulation of counter module at maximum counter behavior](images/counter1){#fig-sim_counter_max}
+![Waveform simulation of counter module at reset behavior](images/counter1){#fig-sim_counter_reset}
 
 ![Waveform simulation including counter at maximum counter behavior](images/counter_sim){#fig-sim_counter}
 :::
 
-The waveform simulation and test results of the flash LED module (flash_led) is shown in @fig-sim_counter_tests, @fig-sim_counter and @fig-sim_counter_max. This testbench cover the reset behavior, enable behavior, and the behavior at counter maximum threshold. The DUT exhibit expected behavior for all test cases. 
+::: {.callout-note collapse="true"}
+## Some tests from testbench code
+
+```
+   // testing enable behavior (on)
+        enable = 1'b1;
+        reset = 1'b0;
+        #10;
+        reset = 1'b1;
+        #50;
+        assert (dut.counter == 24'b101)
+            $display("PASSED! Counter did not increment at time: %0t.", $time);
+        else 
+            $error("FAILED! Counter behaves incorrectly at time: %0t.", $time); 
+        
+        assert (flash == 'b0)
+            $display("PASSED! LED is off as expected: %0t.", $time);
+        else 
+            $error("FAILED! LED behaves incorrectly at time: %0t.", $time); 
+
+    // testing max counter behavior (LED on)
+        reset = 1'b0;
+        #10;
+        reset = 1'b1;
+        #100000000; // counter reach MAX_threshold
+		assert (dut.counter == 24'b0)
+            $display("PASSED! Counter got back to zero as expected: %0t.", $time);
+        else
+            $display("FAILED! Counter has %0d at time: %0t.", dut.counter, $time);
+		
+        assert (flash == 1'b1)
+            $display("PASSED! LED turned on as expected: %0t.", $time);
+        else
+            $display("FAILED! LED has incorrect behavior at time: %0t.", $time);
+    
+    // then wait another max LED should turn off
+        #100000000;
+		#10;
+        assert (flash == 1'b0)
+            $display("PASSED! LED turned off as expected at counter %0d: %0t.", dut.counter, $time);
+        else
+            $display("FAILED! LED has incorrect behavior at time: %0t.", $time);
+```
+:::
+
+The waveform simulation and test results of the flash LED module (flash_led) is shown in @fig-sim_counter_tests, @fig-sim_counter and @fig-sim_counter_reset. This testbench cover the reset behavior, enable behavior, and the behavior at counter maximum threshold. The DUT exhibit expected behavior for all test cases. 
 
 ::: {.callout-note collapse="true"}
 ## seven-segment waveform
