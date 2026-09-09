@@ -11,10 +11,10 @@ draft: false
 Hi! This is going to be my first post on the Blog! 
 I am hoping to experiment more about how to design as well as use microprocessors to build cool things. Time to pick up all the System Verilog syntax that left my brain right after E85...
 
-Some goals of this semester include:
++ Some goals of this semester include:
 
-Getting more familiar with Git/Github
++ Getting more familiar with Git/Github
 
-Write better styled code
++ Write better styled code
 
-Try to build something fun!
++ Try to build something fun!
