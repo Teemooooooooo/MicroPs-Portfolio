@@ -4,7 +4,14 @@
     "href": "posts/first-post.html",
     "title": "First Post: Goals of the Semester",
     "section": "",
-    "text": "Hi! This is going to be my first post on the Blog! I am hoping to experiment more about how to design as well as use microprocessors to build cool things. Time to pick up all the System Verilog syntax that left my brain right after E85…\n\nSome goals of this semester include:\nGetting more familiar with Git/Github\nWrite better styled code\nTry to build something fun!"
+    "text": "Hi! This is going to be my first post on the Blog! I am hoping to experiment more about how to design as well as use microprocessors to build cool things. Time to pick up all the System Verilog syntax that left my brain right after E85…"
+  },
+  {
+    "objectID": "posts/first-post.html#some-goals-of-this-semester-include",
+    "href": "posts/first-post.html#some-goals-of-this-semester-include",
+    "title": "First Post: Goals of the Semester",
+    "section": "Some goals of this semester include:",
+    "text": "Some goals of this semester include:\n\nGetting more familiar with Git/Github\nWrite better styled code\nTry to build something fun!"
   },
   {
     "objectID": "labs/lab1/lab1.html",
@@ -60,7 +67,7 @@
     "href": "index.html",
     "title": "E155 Portfolio",
     "section": "",
-    "text": "Ellen Yu is an Engineering student at Harvey Mudd College focusing on Electrical and Computer Engineering. Her interests are in processor architecture, hardware design, and verification. As both an engineer and an artist, she enjoys transforming ideas into thoughtful, functional products.\nWhile you are here, this is a picture of my dog! He is shedding right now"
+    "text": "Ellen Yu is an Engineering student at Harvey Mudd College focusing on Electrical and Computer Engineering. Her interests are in processor architecture, hardware design, and verification. As both an engineer and an artist, she enjoys transforming ideas into thoughtful, functional products."
   },
   {
     "objectID": "blog.html",
