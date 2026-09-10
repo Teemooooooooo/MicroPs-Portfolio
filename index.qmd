@@ -13,6 +13,3 @@ about:
 ---
 
 Ellen Yu is an Engineering student at [Harvey Mudd College](https://hmc.edu) focusing on Electrical and Computer Engineering. Her interests are in processor architecture, hardware design, and verification. As both an engineer and an artist, she enjoys transforming ideas into thoughtful, functional products. 
-
-While you are here, this is a picture of my dog! He is shedding right now
-![](images/dog.jpg)
