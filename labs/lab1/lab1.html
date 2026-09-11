@@ -222,15 +222,15 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p>The design for this lab has the following features:</p>
 <ul>
-<li><p>4 switch inputs that control 2 LEDs and a 7 segment display</p></li>
+<li><p>4 switch inputs that control 2 LEDs and a 7-segment display</p></li>
 <li><p>An LED that blinks at 2.4 Hz, controlled by HSOSC (onboard high-speed oscillator) that has a frequency of 48 MHz.</p></li>
 </ul>
-<p>The four switches are viewed as 4 bits and the seven segment display shows the hexadecimal representation of the 4 bits.</p>
+<p>The four switches are viewed as 4 bits, and the seven-segment display shows the hexadecimal representation of the 4 bits.</p>
 </section>
 <section id="design-and-testing-methodology" class="level2">
 <h2 class="anchored" data-anchor-id="design-and-testing-methodology">Design and Testing Methodology</h2>
-<p>The HSOSC at a frequency of 48 MHz is used to generate the clock input into the flash_led module. The flash_led module contains a counter that converts the 48 MHz signal into a signal that blinks at 2.4 Hz. The calculation for the counter maximum threshold is shown as below:</p>
-<p>In order for the LED to blink at 2.4 Hz. The signal sent to the LED need to be switching at a frequency of 4.8 Hz between 0 and 1. In order to produce the 4.8 Hz signal, calculate <span class="math inline">\(48 MHz / 4.8 Hz\)</span> to figure out the maximum threshold of the counter needs to be <span class="math inline">\(10^7\)</span>. Then, set flash (the signal sent to the LED) to be equal to the opposite value that flash previously hold to blink the LED.</p>
+<p>The HSOSC at a frequency of 48 MHz is used to generate the clock input into the flash_led module. The flash_led module contains a counter that converts the 48 MHz signal into a signal that blinks at 2.4 Hz. The calculation for the counter maximum threshold is shown below:</p>
+<p>In order for the LED to blink at 2.4 Hz, the signal sent to the LED need to be switching at a frequency of 4.8 Hz between 0 and 1. In order to produce the 4.8 Hz signal, calculate <span class="math inline">\(48 MHz / 4.8 Hz\)</span> to determine that the maximum threshold of the counter needs to be <span class="math inline">\(10^7\)</span>. Then, set flash (the signal sent to the LED) to be equal to the opposite value that flash previously hold to blink the LED.</p>
 <p>For the other LEDs and the seven-segment display, combinational logic is used to map switch inputs to outputs.</p>
 </section>
 <section id="technical-documentation" class="level2">
@@ -263,7 +263,7 @@ Figure&nbsp;1: Block Diagram of the System Verilog design
 </div>
 </div>
 </div>
-<p>The block diagram in <a href="#fig-block" class="quarto-xref">Figure&nbsp;1</a> shows the overall architecture of the design. The lab1_ey module is the top level module. It contains the switch to LED logic and three submodules: the high-speed oscillator block (HSOSC), flash LED module (flash_led), and the seven_segment display module (seven_seg).</p>
+<p>The block diagram in <a href="#fig-block" class="quarto-xref">Figure&nbsp;1</a> shows the overall architecture of the design. The lab1_ey module is the top-level module. It contains the switch-to-LED logic and three submodules: the high-speed oscillator block (HSOSC), flash LED module (flash_led), and the seven-segment display module (seven_seg).</p>
 </section>
 <section id="schematic" class="level3">
 <h3 class="anchored" data-anchor-id="schematic">Schematic</h3>
@@ -292,13 +292,13 @@ Figure&nbsp;2: Schematic of the seven-segment display
 </div>
 </div>
 </div>
-<p>The schematic in <a href="#fig-schematic" class="quarto-xref">Figure&nbsp;2</a> shows the physical layout of the UPduino to the seven-segment display connection. The LED on each segment is connected to the output pin of UPduino using a 150 ohm current-limiting resistor (R) to ensure the output current does not burn the LED.</p>
+<p>The schematic in <a href="#fig-schematic" class="quarto-xref">Figure&nbsp;2</a> shows the physical layout of the UPduino to the seven-segment display connection. Each LED segment is connected to the output pin of UPduino using a 150-ohm current-limiting resistor (R) to ensure the output current does not burn the LED.</p>
 <p>The resistor value calculation is shown below:</p>
 <p><span class="math inline">\(I_D = (V_{DD} - V_{on})/(R_s + R_D)\)</span></p>
 <p>Assume <span class="math inline">\(R_s\)</span> to be negligible, and from reading the datasheet, we get that</p>
 <p><span class="math inline">\(V_{dd} = 3.3 V\)</span></p>
 <p><span class="math inline">\(V_{forward} = 2.1 V\)</span> for the LEDs, which is the <span class="math inline">\(V_{on}\)</span> in the calculation.</p>
-<p><span class="math inline">\(I_D\)</span> is between 5 to 20 mA.</p>
+<p><span class="math inline">\(I_D\)</span> is between 5 and 20 mA.</p>
 <p><span class="math inline">\(I_D = 8 mA\)</span> is chosen for this calculation. Plug in the numbers stated above, we get that <span class="math inline">\(R_D = 150 ohm\)</span></p>
 </section>
 </section>
@@ -306,7 +306,7 @@ Figure&nbsp;2: Schematic of the seven-segment display
 <h2 class="anchored" data-anchor-id="result-and-discussion">Result and Discussion</h2>
 <section id="testbench-simulation" class="level3">
 <h3 class="anchored" data-anchor-id="testbench-simulation">Testbench Simulation</h3>
-<p>There is one testbench for each module to verify that the design met all intended objectives.</p>
+<p>There is one testbench for each module to verify that the design meets all intended objectives.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -405,7 +405,7 @@ Figure&nbsp;5: Waveform simulation including counter at maximum counter behavior
 </div>
 </div>
 </div>
-<p>The waveform simulation and test results of the flash LED module (flash_led) is shown in <a href="#fig-sim_counter_tests" class="quarto-xref">Figure&nbsp;3</a>, <a href="#fig-sim_counter" class="quarto-xref">Figure&nbsp;5</a> and <a href="#fig-sim_counter_reset" class="quarto-xref">Figure&nbsp;4</a>. This testbench cover the reset behavior, enable behavior, and the behavior at counter maximum threshold. The DUT exhibit expected behavior for all test cases.</p>
+<p>The waveform simulation and test results of the flash LED module (flash_led) are shown in <a href="#fig-sim_counter_tests" class="quarto-xref">Figure&nbsp;3</a>, <a href="#fig-sim_counter" class="quarto-xref">Figure&nbsp;5</a> and <a href="#fig-sim_counter_reset" class="quarto-xref">Figure&nbsp;4</a>. This testbench covers the reset behavior, enable behavior, and the behavior at counter maximum threshold. The DUT exhibits expected behavior for all test cases.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -431,7 +431,7 @@ Figure&nbsp;6: Waveform simulation of the seven-segment display
 </div>
 </div>
 </div>
-<p>The waveform simulation and the test results of the seven segment display module (seven_seg) is shown in <a href="#fig-seven" class="quarto-xref">Figure&nbsp;6</a>. As shown, the testbench covers all 16 possible input combinations and their expected outputs and the DUT passes all test cases.</p>
+<p>The waveform simulation and the test results of the seven-segment display module (seven_seg) are shown in <a href="#fig-seven" class="quarto-xref">Figure&nbsp;6</a>. As shown, the testbench covers all 16 possible input combinations and their expected outputs and the DUT passes all test cases.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -467,7 +467,7 @@ Figure&nbsp;8: Zoomed-out top level showing LED flashing
 </div>
 </div>
 </div>
-<p>The top level testbench is shown in <a href="#fig-top_all" class="quarto-xref">Figure&nbsp;7</a> and <a href="#fig-top" class="quarto-xref">Figure&nbsp;8</a>. This testbench tests all cases of the switch to LED logic and the DUT does pass all test cases. This testbench also verifies that the connections to submodules are working properly as the flashing LED does exhibit expected behavior.</p>
+<p>The top-level testbench is shown in <a href="#fig-top_all" class="quarto-xref">Figure&nbsp;7</a> and <a href="#fig-top" class="quarto-xref">Figure&nbsp;8</a>. This testbench tests all cases of the switch-to-LED logic and the DUT does pass all test cases. This testbench also verifies that the connections to submodules are working properly as the flashing LED does exhibit expected behavior.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -559,7 +559,7 @@ endmodule</code></pre>
 </div>
 </div>
 </div>
-<p>I used Gemini to produce this code. I would say that the quality of the code is very luck dependent. When I tried to do it with AI for the first time, it did not synthesize properly even when I fed the error message back into the LLM for 5 times. After I started a new chat, it made synthesizable code within 2 tries. The ’0 part of the code that AI generated is new to me. The code did not synthesize for the first time because it had issue with the HFOSC naming that is specific to the Lattice Radiant software. Radiant outputs “ERROR &lt;35901063&gt; - ../source/impl_1/led_blink.sv(18): instantiating unknown module SB_HFOSC. VERI-1063”. I would let the LLM know what software I am working with first if I use LLM in my workflow.</p>
+<p>I used Gemini to produce this code. I would say that the quality of the code is very luck dependent. When I tried to do it with AI for the first time, it did not synthesize properly even when I fed the error message back into the LLM for 5 times. After I started a new chat, it made synthesizable code within 2 tries. The ’0 part of the code that AI generated is new to me. The code did not synthesize for the first time because of the HFOSC naming that is specific to the Lattice Radiant software. Radiant outputs “ERROR &lt;35901063&gt; - ../source/impl_1/led_blink.sv(18): instantiating unknown module SB_HFOSC. VERI-1063”. I would let the LLM know what software I am working with first if I use LLM in my workflow.</p>
 
 
 </section>
