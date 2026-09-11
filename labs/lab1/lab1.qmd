@@ -11,17 +11,17 @@ draft: false
 ## Introduction
 The design for this lab has the following features:
 
-+ 4 switch inputs that control 2 LEDs and a 7 segment display
++ 4 switch inputs that control 2 LEDs and a 7-segment display
 
 + An LED that blinks at 2.4 Hz, controlled by HSOSC (onboard high-speed oscillator) that has a frequency of 48 MHz.
 
-The four switches are viewed as 4 bits and the seven segment display shows the hexadecimal representation of the 4 bits. 
+The four switches are viewed as 4 bits, and the seven-segment display shows the hexadecimal representation of the 4 bits. 
 
 ## Design and Testing Methodology
 
-The HSOSC at a frequency of 48 MHz is used to generate the clock input into the flash_led module. The flash_led module contains a counter that converts the 48 MHz signal into a signal that blinks at 2.4 Hz. The calculation for the counter maximum threshold is shown as below:
+The HSOSC at a frequency of 48 MHz is used to generate the clock input into the flash_led module. The flash_led module contains a counter that converts the 48 MHz signal into a signal that blinks at 2.4 Hz. The calculation for the counter maximum threshold is shown below:
 
-In order for the LED to blink at 2.4 Hz. The signal sent to the LED need to be switching at a frequency of 4.8 Hz between 0 and 1. In order to produce the 4.8 Hz signal, calculate $48 MHz / 4.8 Hz$ to figure out the maximum threshold of the counter needs to be $10^7$. Then, set flash (the signal sent to the LED) to be equal to the opposite value that flash previously hold to blink the LED. 
+In order for the LED to blink at 2.4 Hz, the signal sent to the LED need to be switching at a frequency of 4.8 Hz between 0 and 1. In order to produce the 4.8 Hz signal, calculate $48 MHz / 4.8 Hz$ to determine that the maximum threshold of the counter needs to be $10^7$. Then, set flash (the signal sent to the LED) to be equal to the opposite value that flash previously hold to blink the LED. 
 
 For the other LEDs and the seven-segment display, combinational logic is used to map switch inputs to outputs.
 
@@ -36,7 +36,7 @@ The source code for the project can be found in the associated [Github repositor
 ![Block Diagram of the System Verilog design](images/block_dia.png){#fig-block}
 ::: 
 
-The block diagram in @fig-block shows the overall architecture of the design. The lab1_ey module is the top level module. It contains the switch to LED logic and three submodules: the high-speed oscillator block (HSOSC), flash LED module (flash_led), and the seven_segment display module (seven_seg).
+The block diagram in @fig-block shows the overall architecture of the design. The lab1_ey module is the top-level module. It contains the switch-to-LED logic and three submodules: the high-speed oscillator block (HSOSC), flash LED module (flash_led), and the seven-segment display module (seven_seg).
 
 ### Schematic
 
@@ -45,7 +45,7 @@ The block diagram in @fig-block shows the overall architecture of the design. Th
 ![Schematic of the seven-segment display](images/schematic.png){#fig-schematic}
 ::: 
 
-The schematic in @fig-schematic shows the physical layout of the UPduino to the seven-segment display connection. The LED on each segment is connected to the output pin of UPduino using a 150 ohm current-limiting resistor (R) to ensure the output current does not burn the LED. 
+The schematic in @fig-schematic shows the physical layout of the UPduino to the seven-segment display connection. Each LED segment is connected to the output pin of UPduino using a 150-ohm current-limiting resistor (R) to ensure the output current does not burn the LED. 
 
 The resistor value calculation is shown below:
 
@@ -57,7 +57,7 @@ $V_{dd} = 3.3 V$
 
 $V_{forward} = 2.1 V$ for the LEDs, which is the $V_{on}$ in the calculation.
 
-$I_D$ is between 5 to 20 mA.  
+$I_D$ is between 5 and 20 mA.  
 
 $I_D = 8 mA$ is chosen for this calculation. Plug in the numbers stated above, we get that $R_D = 150 ohm$
 
@@ -65,7 +65,7 @@ $I_D = 8 mA$ is chosen for this calculation. Plug in the numbers stated above, w
 
 ### Testbench Simulation
 
-There is one testbench for each module to verify that the design met all intended objectives. 
+There is one testbench for each module to verify that the design meets all intended objectives. 
 
 ::: {.callout-note collapse="true"}
 ## counter waveform
@@ -121,7 +121,7 @@ There is one testbench for each module to verify that the design met all intende
 ```
 :::
 
-The waveform simulation and test results of the flash LED module (flash_led) is shown in @fig-sim_counter_tests, @fig-sim_counter and @fig-sim_counter_reset. This testbench cover the reset behavior, enable behavior, and the behavior at counter maximum threshold. The DUT exhibit expected behavior for all test cases. 
+The waveform simulation and test results of the flash LED module (flash_led) are shown in @fig-sim_counter_tests, @fig-sim_counter and @fig-sim_counter_reset. This testbench covers the reset behavior, enable behavior, and the behavior at counter maximum threshold. The DUT exhibits expected behavior for all test cases. 
 
 ::: {.callout-note collapse="true"}
 ## seven-segment waveform
@@ -129,7 +129,7 @@ The waveform simulation and test results of the flash LED module (flash_led) is 
 
 :::
 
-The waveform simulation and the test results of the seven segment display module (seven_seg) is shown in @fig-seven. As shown, the testbench covers all 16 possible input combinations and their expected outputs and the DUT passes all test cases. 
+The waveform simulation and the test results of the seven-segment display module (seven_seg) are shown in @fig-seven. As shown, the testbench covers all 16 possible input combinations and their expected outputs and the DUT passes all test cases. 
 
 ::: {.callout-note collapse="true"}
 ## Top level waveform
@@ -139,7 +139,7 @@ The waveform simulation and the test results of the seven segment display module
 ![Zoomed-out top level showing LED flashing](images/top_led.png){#fig-top}
 ::: 
 
-The top level testbench is shown in @fig-top_all and @fig-top. This testbench tests all cases of the switch to LED logic and the DUT does pass all test cases. This testbench also verifies that the connections to submodules are working properly as the flashing LED does exhibit expected behavior. 
+The top-level testbench is shown in @fig-top_all and @fig-top. This testbench tests all cases of the switch-to-LED logic and the DUT does pass all test cases. This testbench also verifies that the connections to submodules are working properly as the flashing LED does exhibit expected behavior. 
 
 ::: {.callout-note collapse="true"}
 ## HSOSC timing
@@ -195,6 +195,6 @@ module led_blink (
 endmodule
 ```
 ::: 
-I used Gemini to produce this code. I would say that the quality of the code is very luck dependent. When I tried to do it with AI for the first time, it did not synthesize properly even when I fed the error message back into the LLM for 5 times. After I started a new chat, it made synthesizable code within 2 tries. The '0 part of the code that AI generated is new to me. The code did not synthesize for the first time because it had issue with the HFOSC naming that is specific to the Lattice Radiant software. Radiant outputs "ERROR <35901063> - ../source/impl_1/led_blink.sv(18): instantiating unknown module SB_HFOSC. VERI-1063". I would let the LLM know what software I am working with first if I use LLM in my workflow. 
+I used Gemini to produce this code. I would say that the quality of the code is very luck dependent. When I tried to do it with AI for the first time, it did not synthesize properly even when I fed the error message back into the LLM for 5 times. After I started a new chat, it made synthesizable code within 2 tries. The '0 part of the code that AI generated is new to me. The code did not synthesize for the first time because of the HFOSC naming that is specific to the Lattice Radiant software. Radiant outputs "ERROR <35901063> - ../source/impl_1/led_blink.sv(18): instantiating unknown module SB_HFOSC. VERI-1063". I would let the LLM know what software I am working with first if I use LLM in my workflow. 
 
 
