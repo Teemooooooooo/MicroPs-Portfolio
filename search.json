@@ -67,56 +67,7 @@
     "href": "lab.html",
     "title": "E155 Labs",
     "section": "",
-    "text": "Here lists the lab reports of MicroPs."
-  },
-  {
-    "objectID": "lab.html#lab-1---board-assembly-and-testing",
-    "href": "lab.html#lab-1---board-assembly-and-testing",
-    "title": "E155 Labs",
-    "section": "Lab 1 - Board Assembly and Testing",
-    "text": "Lab 1 - Board Assembly and Testing"
-  },
-  {
-    "objectID": "lab.html#lab-2---multiplexed-7-segment-display",
-    "href": "lab.html#lab-2---multiplexed-7-segment-display",
-    "title": "E155 Labs",
-    "section": "Lab 2 - Multiplexed 7-Segment Display",
-    "text": "Lab 2 - Multiplexed 7-Segment Display"
-  },
-  {
-    "objectID": "lab.html#lab-3---keypad-scanner",
-    "href": "lab.html#lab-3---keypad-scanner",
-    "title": "E155 Labs",
-    "section": "Lab 3 - Keypad Scanner",
-    "text": "Lab 3 - Keypad Scanner"
-  },
-  {
-    "objectID": "lab.html#lab-4---digital-audio",
-    "href": "lab.html#lab-4---digital-audio",
-    "title": "E155 Labs",
-    "section": "Lab 4 - Digital Audio",
-    "text": "Lab 4 - Digital Audio"
-  },
-  {
-    "objectID": "lab.html#lab-5---interrupts",
-    "href": "lab.html#lab-5---interrupts",
-    "title": "E155 Labs",
-    "section": "Lab 5 - Interrupts",
-    "text": "Lab 5 - Interrupts"
-  },
-  {
-    "objectID": "lab.html#lab-6---the-internet-of-things-and-serial-peripheral-interface",
-    "href": "lab.html#lab-6---the-internet-of-things-and-serial-peripheral-interface",
-    "title": "E155 Labs",
-    "section": "Lab 6 - The Internet of Things and Serial Peripheral Interface",
-    "text": "Lab 6 - The Internet of Things and Serial Peripheral Interface"
-  },
-  {
-    "objectID": "lab.html#lab-7---the-advanced-encryption-standard-aes",
-    "href": "lab.html#lab-7---the-advanced-encryption-standard-aes",
-    "title": "E155 Labs",
-    "section": "Lab 7 - The Advanced Encryption Standard (AES)",
-    "text": "Lab 7 - The Advanced Encryption Standard (AES)"
+    "text": "Here lists the lab reports of MicroPs.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLab 2 - Multiplexed 7-Segment Display\n\n\nFirst thing when debugging – ALWAYS CHECK POWER\n\n\n\n\n\nSep 15, 2026\n\n\nEllen Yu\n\n\n\n\n\n\n\n\n\n\n\n\nLab 1 - Board Assembly and Testing\n\n\nHardest thing turns out to be computer not connecting to hardware…\n\n\n\n\n\nSep 1, 2026\n\n\nEllen Yu\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "blog.html",
