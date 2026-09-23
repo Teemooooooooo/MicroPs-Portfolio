@@ -1,18 +1,19 @@
 [
   {
+    "listing": "/blog.html",
+    "items": [
+      "/posts/post lab 3/thrid-lab.html",
+      "/posts/post lab 2/second-lab.html",
+      "/posts/first-lab.html",
+      "/posts/first-post.html"
+    ]
+  },
+  {
     "listing": "/lab.html",
     "items": [
       "/labs/lab3/lab3.html",
       "/labs/lab2/lab2.html",
       "/labs/lab1/lab1.html"
-    ]
-  },
-  {
-    "listing": "/blog.html",
-    "items": [
-      "/posts/post lab 2/second-lab.html",
-      "/posts/first-lab.html",
-      "/posts/first-post.html"
     ]
   }
 ]

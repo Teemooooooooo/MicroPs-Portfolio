@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Ellen Yu">
+<meta name="dcterms.date" content="2026-09-23">
+<meta name="description" content="Timing of signal is causing issues…">
 
-<title>E155 Blog – E155 Portfolio</title>
+<title>Lab 3 - Close one but done! – E155 Portfolio</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -29,25 +32,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-172ba59bd5e0b52282274ba0c0cc16fc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-172ba59bd5e0b52282274ba0c0cc16fc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -75,67 +76,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -145,7 +88,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">E155 Portfolio</span>
     </a>
   </div>
@@ -156,15 +99,15 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./blog.html" aria-current="page"> 
+    <a class="nav-link" href="../../blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./lab.html"> 
+    <a class="nav-link" href="../../lab.html"> 
 <span class="menu-text">Labs</span></a>
   </li>  
   <li class="nav-item">
@@ -190,14 +133,34 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">E155 Blog</h1>
-</div>
+<h1 class="title">Lab 3 - Close one but done!</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">reflection</div>
+  </div>
+  </div>
 
+<div>
+  <div class="description">
+    Timing of signal is causing issues…
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Ellen Yu </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 23, 2026</p>
+    </div>
+  </div>
   
     
   </div>
@@ -207,116 +170,38 @@ window.Quarto = {
 </header>
 
 
-<p>Here are the blog posts through out the course!</p>
+<p>I just finished lab 3 check-in! I failed to defend my eight hours of sleep this week. I think the shortest sleep this week happened when I stayed up until 3:30 am in the digital lab and then woke up at 7:30 for the RISC-V Test Plan meeting.</p>
+<p>Anyways I want to talk about what I learned from this lab before I forget! The most significant issue that I ran into is the signals getting their value in mismatching clock ticks.</p>
+<p>For example, my first major issue was that my seven-segment display would always show 00 (which is the default display value) whenever two buttons are pressed at the same time. My first instinct was to reason it out: The display is only supposed to update when the update signal is high, and the update signal going high depends on other signals produced by the other modules. To isolate the problem, I started by checking each module individually. I did not use assert statements, but I added input signals to simulate some cases and used the waveform to confirm that the signals are behaving correctly. Each individual module are working as expected. This led me to think that the issue can be something with timing — mismatching between what signal is set to high at which clock tick.</p>
+<p>The final clue was found in <a href="#fig-timing_wave" class="quarto-xref">Figure&nbsp;1</a>. By looking at the update signal, the s_next, s0 and s1 signals side by side, one can tell that the s_next state already changes to the new value when the main FSM sets the update signal. To address this issue, I introduced another flop to delay s_next by one clock cycle so that it matches with the control signals.</p>
+<div id="fig-timing_wave" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-timing_wave-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/timing_wave.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-timing_wave-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Waveform of the top module
+</figcaption>
+</figure>
+</div>
+<p>I had another major issue that I needed to debug: Every press that I exert gets registered multiple times. Again, I checked every module individually and verified their functionality, so the largest possible cause of failure is timing mismatch again. This time I do have a vague idea of where the issue might be: The fact that I am using <code>r_sync</code> as the enable signal into my flops that read column outputs from the keypad provides an easy way to fail: if data timing does not match the exact timing when the flop updates (for example, if the scanner moves on to the next row before the enable signal for the previous row turns off), the one key press can potentially be accidentally recorded as multiple key presses. This turned out to be the issue for me and it was fixed by adding a <code>read</code> signal connecting to the <code>r_sync</code> to ensure that the data only updates when somewhere in the middle of the the intended reading time.</p>
+<p>For this lab, I started most of by debugging by flashing my code to hardware. Comparing to debugging using testbenches, hardware gives a physical intuition of how the design should function and where might have issue. It provides a good starting point for debugging. I then use test bench to trace down more specific signals. The challenge with starting with test bench is that the test bench is not necessarily correct and it would be even harder trying to debug two things at the same time :(.</p>
+<p>By the way I produced pretty nice block diagram and it did not take very long this time! I think the block diagram I drew for system-on-chip actually left something in my brain.</p>
+<p>The block diagram from SOC:</p>
+<div id="fig-soc_block" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-soc_block-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/soc_block.jpg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-soc_block-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Block diagram from SOC
+</figcaption>
+</figure>
+</div>
 
 
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="cmVmbGVjdGlvbg==" data-listing-date-sort="1790146800000" data-listing-file-modified-sort="1790204757723" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="579">
-<div class="thumbnail"><a href="./posts/post lab 3/thrid-lab.html" class="no-external">
-
-<p class="card-img-top"><img loading='lazy' src="posts\post lab 3\images\timing_wave.png"  class="thumbnail-image card-img"/></p>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/post lab 3/thrid-lab.html" class="no-external">Lab 3 - Close one but done!</a>
-</h3>
-<div class="delink listing-description"><a href="./posts/post lab 3/thrid-lab.html" class="no-external">
-<p>Timing of signal is causing issues…</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/post lab 3/thrid-lab.html" class="no-external">
-<div class="listing-date">
-Sep 23, 2026
-</div>
-<div class="listing-author">
-Ellen Yu
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="cmVmbGVjdGlvbg==" data-listing-date-sort="1789628400000" data-listing-file-modified-sort="1789686205529" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="242">
-<div class="thumbnail"><a href="./posts/post lab 2/second-lab.html" class="no-external">
-
-<p class="card-img-top"><img loading='lazy' src="posts\post lab 2\images\breadboard.jpg"  class="thumbnail-image card-img"/></p>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/post lab 2/second-lab.html" class="no-external">Lab 2 - Done!</a>
-</h3>
-<div class="delink listing-description"><a href="./posts/post lab 2/second-lab.html" class="no-external">
-<p>Remember to check power first when debugging…</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/post lab 2/second-lab.html" class="no-external">
-<div class="listing-date">
-Sep 17, 2026
-</div>
-<div class="listing-author">
-Ellen Yu
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="cmVmbGVjdGlvbg==" data-listing-date-sort="1788850800000" data-listing-file-modified-sort="1788931071148" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="72">
-<div class="thumbnail"><a href="./posts/first-lab.html" class="no-external">
-
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/first-lab.html" class="no-external">After the First Lab: New Goals of the Semester</a>
-</h3>
-<div class="delink listing-description"><a href="./posts/first-lab.html" class="no-external">
-<p>Okay I need to rethink my goals…</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/first-lab.html" class="no-external">
-<div class="listing-date">
-Sep 8, 2026
-</div>
-<div class="listing-author">
-Ellen Yu
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="cmVmbGVjdGlvbg==" data-listing-date-sort="1788159600000" data-listing-file-modified-sort="1789058019412" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="61">
-<div class="thumbnail"><a href="./posts/first-post.html" class="no-external">
-
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/first-post.html" class="no-external">First Post: Goals of the Semester</a>
-</h3>
-<div class="delink listing-description"><a href="./posts/first-post.html" class="no-external">
-<p>Listing the goals…</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/first-post.html" class="no-external">
-<div class="listing-date">
-Aug 31, 2026
-</div>
-<div class="listing-author">
-Ellen Yu
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
