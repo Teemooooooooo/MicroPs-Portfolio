@@ -53,7 +53,7 @@ The source code for the project can be found in the associated [Github repositor
 ### Block Diagram
 
 ::: {.callout-note collapse="true"}
-## Top Leve Block Diagram
+## Top Level Block Diagram
 ![Block Diagram of the Top Level](images/top_block.png){#fig-top_block}
 ::: 
 The block diagram in @fig-top_block shows the overall architecture of the design. The lab3_ey module is the top level module. 
@@ -77,7 +77,7 @@ The block diagram of the module that converts row and column reading into 16-bit
 ### Schematic
 
 ::: {.callout-note collapse="true"}
-## Schematic of the Desgin
+## Schematic of the Design
 ![Schematic of the Design](images/schematic.png){#fig-schematic}
 ::: 
 
