@@ -1,0 +1,81 @@
+---
+title: "Lab 3 - Keypad Scanner"
+description: "Display the value of the pressed key on the seven segment display!"
+author: "Ellen Yu"
+date: "9/22/26"
+categories:
+  - reflection
+  - labreport
+draft: false
+--- 
+## Introduction
+The design for this lab has the following features:
+
++ A dual seven-segment display that shows the last two hexadecimal digit pressed on the keypad, with the most recent entry appearing at the right
+
++ A keypad that takes user input with each press recorded exactly once
+
++ The display value should not update if additional keys are pressed while still holding down the first key
+
+## Design and Testing Methodology
+
+The HSOSC at a frequency of 48 MHz is used to generate the clock input into the multiplex counter and the scanning module. From researching, it was learned that the threshold frequency at which human will not be able to detect blinking is 60 Hz. Therefore, the multiplex counter is used to reduce the 48 MHz clock down to a 60 Hz slower clock.
+
+A synchronizer is used to handle asynchronous column reading, and the same synchronizer is applied to the already synchronous row readings to ensure the column and row values match when mapping the readings to the key values.
+
+::: {.callout-note collapse="true"}
+## Main FSM
+![State transition diagram and next state logic of the main FSM](images/main_fsm.png){#fig-main_fsm}
+::: 
+
+::: {.callout-note collapse="true"}
+## Debounce FSM
+![State transition diagram and next state logic of the debounce FSM](images/debounce_fsm.png){#fig-debounce_fsm}
+:::
+
+The design includes various finite state machines that communicate with each other. Two of the main canonical FSMs implemented are the main FSM that controls the update logic of the seven-segment display and the debounce FSM that handles switch bouncing. The state transition diagram and the next state logic of the two FSMs are shown in @fig-main_fsm and @fig-debounce_fsm.
+
+ 
+## Technical Documentation
+
+The source code for the project can be found in the associated [Github repository](https://github.com/Teemooooooooo/e155-lab3).
+
+
+### Block Diagram
+
+::: {.callout-note collapse="true"}
+## Top Leve Block Diagram
+![Block Diagram of the Top Level](images/top_block.png){#fig-top_block}
+::: 
+The block diagram in @fig-top_block shows the overall architecture of the design. The lab3_ey module is the top level module. 
+
+::: {.callout-note collapse="true"}
+## Block Diagram of Synchronizer
+![Block Diagram of the Synchronizer Module](images/synchronizer_block.png){#fig-synchronizer_block}
+:::
+
+The block diagram of the synchronizer module is shown in @fig-synchronizer_block.
+
+
+::: {.callout-note collapse="true"}
+## Block Diagram of Reading to Key Encoding Module
+![Block Diagram of the Reading to Key Encoding Module](images/row_col_to_binary_block.png){#fig-row_col_to_binary_block}
+:::
+
+The block diagram of the module that converts row and column reading into 16-bit one-hot encoding and binary value (row_col_to_binary) is shown in @fig-row_col_to_binary_block.
+
+
+### Schematic
+
+::: {.callout-note collapse="true"}
+## Schematic of the Desgin
+![Schematic of the Design](images/schematic.png){#fig-schematic}
+::: 
+
+The schematic in @fig-schematic shows the physical layout of the UPduino to the seven-segment display and keypad connection. The calculation of the resistor values can be found in [lab 2 report](https://teemooooooooo.github.io/MicroPs-Portfolio/labs/lab2/lab2.html#schematic).
+
+## Result and Discussion
+
+### Testbench Simulation
+
+There are a total of 6 testbenches written, testing functionality of the top-level module and the new modules. The modules that were already tested from previous labs are not retested. 
