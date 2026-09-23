@@ -17,6 +17,12 @@ The design for this lab has the following features:
 
 + The display value should not update if additional keys are pressed while still holding down the first key
 
+::: {.callout-note collapse="true"}
+## Demo video
+![Demo video](demo.mp4)
+
+:::
+
 ## Design and Testing Methodology
 
 The HSOSC at a frequency of 48 MHz is used to generate the clock input into the multiplex counter and the scanning module. From researching, it was learned that the threshold frequency at which human will not be able to detect blinking is 60 Hz. Therefore, the multiplex counter is used to reduce the 48 MHz clock down to a 60 Hz slower clock.
