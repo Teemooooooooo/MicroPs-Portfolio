@@ -35,7 +35,10 @@ A synchronizer is used to handle asynchronous column reading, and the same synch
 
 The design includes various finite state machines that communicate with each other. Two of the main canonical FSMs implemented are the main FSM that controls the update logic of the seven-segment display and the debounce FSM that handles switch bouncing. The state transition diagram and the next state logic of the two FSMs are shown in @fig-main_fsm and @fig-debounce_fsm.
 
- 
+The debounce module outputs the ```d_en``` signal that indicates at least one key is actually being pressed and the switch is no longer bouncing. This signal allows the main FSM to transition to the PRESSED stage. In the PRESSED state, the main FSM send a ```update``` signal to the seven-segment display input selection module(sev_seg_input) to update the input into the seven segment display. This design divides up the signals cleanly and only requires FSMs with at most 3 states. Other designs may involve fewer finite state machines with more states, which can cause the state transition conditions to be more complicated.
+
+The debounce module handles switch debouncing by blocking the main FSM from updating the display.The main FSM will only update the display if the debounce module set ```d_en``` signal to high. Debounce module sets ```d_en``` only when the input switch has been pressed for long enough. This debounce module handles switch debounce at the cost of filtering out super short clicks. Physically, any press would last for a time that is way longer than the switch bouncing period, therefore this design does work successfully.
+
 ## Technical Documentation
 
 The source code for the project can be found in the associated [Github repository](https://github.com/Teemooooooooo/e155-lab3).
@@ -79,3 +82,105 @@ The schematic in @fig-schematic shows the physical layout of the UPduino to the 
 ### Testbench Simulation
 
 There are a total of 6 testbenches written, testing functionality of the top-level module and the new modules. The modules that were already tested from previous labs are not retested. 
+
+::: {.callout-note collapse="true"}
+## top level waveform
+![Top-level module with all tests passing](images/top_test.png){#fig-top_test}
+
+![Waveform simulation](images/top_wave1.png){#fig-top_wave1}
+
+
+![Waveform simulation](images/top_wave2.png){#fig-top_wave2}
+
+
+![Waveform simulation](images/top_wave3.png){#fig-top_wave3}
+:::
+
+The waveform simulation and test results of the top-level module are shown in @fig-top_wave1, @fig-top_wave2, @fig-top_wave3 and @fig-top_test. This testbench includes a simulated key press with switch bouncing. The DUT exhibits expected behavior for all test cases. 
+
+
+
+::: {.callout-note collapse="true"}
+## Debounce module waveform
+![Debounce module with all tests passing](images/debounce_test.png){#fig-debounce_test}
+
+![Waveform simulation](images/debounce_wave1.png){#fig-debounce_wave1}
+
+
+![Waveform simulation](images/debounce_wave2.png){#fig-debounce_wave2}
+
+
+:::
+
+The waveform simulation and test results of the debounce module are shown in @fig-debounce_wave1, @fig-debounce_wave2 and @fig-debounce_test. The DUT exhibits expected behavior for all test cases. 
+
+
+::: {.callout-note collapse="true"}
+## Main FSM module waveform
+![main FSM module with all tests passing](images/main_fsm_test.png){#fig-main_fsm_test}
+
+![Waveform simulation](images/main_fsm_wave1.png){#fig-main_fsm_wave1}
+
+
+![Waveform simulation](images/main_fsm_wave2.png){#fig-main_fsm_wave2}
+
+
+:::
+
+The waveform simulation and test results of the main FSM module are shown in @fig-main_fsm_wave1, @fig-main_fsm_wave2 and @fig-main_fsm_test. The DUT exhibits expected behavior for all test cases. 
+
+
+
+::: {.callout-note collapse="true"}
+## Reading to encoding module waveform
+![Reading to encoding module with all tests passing](images/row_col_to_binary_test.png){#fig-row_col_to_binary_test}
+
+![Waveform simulation](images/row_col_to_binary_wave.png){#fig-row_col_to_binary_wave}
+
+:::
+
+The waveform simulation and test results of the reading to encoding module (row_col_to_binary) are shown in @fig-row_col_to_binary_wave and @fig-row_col_to_binary_test. The DUT exhibits expected behavior for all test cases. 
+
+
+::: {.callout-note collapse="true"}
+## Seven-segment display input selection module waveform
+![sev_seg_input module with all tests passing](images/sev_seg_input_test.png){#fig-sev_seg_input_test}
+
+![Waveform simulation](images/sev_seg_input_wave.png){#fig-sev_seg_input_wave}
+
+:::
+
+The waveform simulation and test results of the seven-segment display input selection module are shown in @fig-sev_seg_input_wave and @fig-sev_seg_input_test. The DUT exhibits expected behavior for all test cases. 
+
+
+::: {.callout-note collapse="true"}
+## Synchronizer module waveform
+![Synchronizer with all tests passing](images/synchronizer_test.png){#fig-synchronizer_test}
+
+![Waveform simulation](images/synchronizer_wave.png){#fig-synchronizer_wave}
+
+:::
+
+The waveform simulation and test results of the synchronizer module are shown in @fig-synchronizer_wave and @fig-synchronizer_test. The DUT exhibits expected behavior for all test cases. 
+
+::: {.callout-note collapse="true"}
+## Debounce module waveform
+![Synthesizer output reporting no latches or tristate buffers](images/synth_no_latch.png){#fig-synth}
+
+:::
+
+Synthesizer output in @fig-synth showing that design has no latches and no tristate buffers.
+
+
+
+## Conclusion
+
+The design successfully drived a time-multiplexed seven-segment display based on keypad input. 
+
+I spent 38 hours on this lab.
+
+## AI Prototype summary
+
+I used Gemini to produce the code. I attempted the AI prototype and the quality is not great. The code that was first produced had some typos in it so the synthesize fails. I then fed back the error message into the LLM for around 5 more times and the LLM is still not able to fix it. This was the case for both prompts. 
+
+The LLM was also using functions in the produced code. I am not familiar with the use of this syntax therefore it was hard for me to understand the produced code.
