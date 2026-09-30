@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Ellen Yu">
+<meta name="dcterms.date" content="2026-09-30">
+<meta name="description" content="Using C code to play music!">
 
-<title>E155 Labs – E155 Portfolio</title>
+<title>Lab 4 - Digital Audio – E155 Portfolio</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -29,25 +32,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-172ba59bd5e0b52282274ba0c0cc16fc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-172ba59bd5e0b52282274ba0c0cc16fc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -75,35 +76,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
@@ -135,7 +107,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -145,7 +117,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">E155 Portfolio</span>
     </a>
   </div>
@@ -156,15 +128,15 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./blog.html"> 
+    <a class="nav-link" href="../../blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./lab.html" aria-current="page"> 
+    <a class="nav-link" href="../../lab.html"> 
 <span class="menu-text">Labs</span></a>
   </li>  
   <li class="nav-item">
@@ -182,22 +154,56 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#design-and-testing-methodology" id="toc-design-and-testing-methodology" class="nav-link" data-scroll-target="#design-and-testing-methodology">Design and Testing Methodology</a></li>
+  <li><a href="#technical-documentation" id="toc-technical-documentation" class="nav-link" data-scroll-target="#technical-documentation">Technical Documentation</a>
+  <ul class="collapse">
+  <li><a href="#schematic" id="toc-schematic" class="nav-link" data-scroll-target="#schematic">Schematic</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  <li><a href="#ai-prototype-summary" id="toc-ai-prototype-summary" class="nav-link" data-scroll-target="#ai-prototype-summary">AI Prototype summary</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">E155 Labs</h1>
-</div>
+<h1 class="title">Lab 4 - Digital Audio</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">reflection</div>
+    <div class="quarto-category">labreport</div>
+  </div>
+  </div>
 
+<div>
+  <div class="description">
+    Using C code to play music!
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Ellen Yu </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 30, 2026</p>
+    </div>
+  </div>
   
     
   </div>
@@ -207,116 +213,124 @@ window.Quarto = {
 </header>
 
 
-<p>Here lists the lab reports of MicroPs.</p>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>The design for this lab uses the clock on an MCU to play Für Elise.</p>
+</section>
+<section id="design-and-testing-methodology" class="level2">
+<h2 class="anchored" data-anchor-id="design-and-testing-methodology">Design and Testing Methodology</h2>
+<p>This design uses the timer 15 and timer 16 to control the pitch and duration of each note. Timer 15 controls duration and timer 16 controls note pitch.</p>
+<p>Both timers uses a 80M Hz clock, which is brought up by PPL from a 4M Hz clock. The conversion from note frequency to timer 16 configurations are shown as follows:</p>
+<p><span class="math inline">\(note frequency * 2 = \frac {clk frequency}{(ARR + 1)(PSC + 1)}\)</span></p>
+<p>The implementation toggles the output at twice the note frequency to produce a square wave at the desired frequency. This implementation chooses PSC to be 79 for timer 16. Since ARR is 16 bits, the highest number it can represent is <span class="math inline">\(2^{16}-1\)</span>. Therefore, the highest frequency that this implementation supports is:</p>
+<p><span class="math inline">\(\frac {80000000}{(1)(80)(2)}\)</span> = 500000 Hz</p>
+<p>The lowest note frequency that this implmentation supports is:</p>
+<p><span class="math inline">\(\frac {80000000}{(2^{16})(80)(2)}\)</span> = 8 Hz</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>All notes frequencies in Für Elise with percent error
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div id="fig-accuracy" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-accuracy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/accuracy.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-accuracy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: All notes frequencies in Für Elise with percent error calculation
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>As shown in <a href="#fig-accuracy" class="quarto-xref">Figure&nbsp;1</a>, the implementation is capable of replicating all notes in Für Elise within 1% accuracy.</p>
+<p>The conversion from note duration to timer 15 configurations are shown as follows:</p>
+<p><span class="math inline">\(duration = \frac {(ARR)(PSC+1)}{(80000000)}\)</span></p>
+<p>In code implementation divides by 80000 instead as the reference durations are provided in milliseconds. This design chooses PSC to be 7999 for timer 15. Since ARR is 16 bits, the highest number it can represent is <span class="math inline">\(2^{16}-1\)</span>.</p>
+<p>The maximum duration supported by this design is:</p>
+<p><span class="math inline">\(duration = \frac {(2^{16}-1)(7999+1)}{(80000)}\)</span> = 6553.5 millisecond</p>
+<p>The maximum duration supported by this design is:</p>
+<p><span class="math inline">\(duration = \frac {(0)(7999+1)}{(80000)}\)</span> = 0 millisecond</p>
+</section>
+<section id="technical-documentation" class="level2">
+<h2 class="anchored" data-anchor-id="technical-documentation">Technical Documentation</h2>
+<p>The source code for the project can be found in the associated <a href="https://github.com/Teemooooooooo/e155-lab4">Github repository</a>.</p>
+<section id="schematic" class="level3">
+<h3 class="anchored" data-anchor-id="schematic">Schematic</h3>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Schematic of the Design
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div id="fig-schematic" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-schematic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/schematic.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-schematic-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Schematic of the Design
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>The schematic in <a href="#fig-schematic" class="quarto-xref">Figure&nbsp;2</a> shows the physical layout of the MCU to speaker connection. The circuit design is based on the information found on the datasheet of the speaker.</p>
+</section>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>The design successfully drived a speaker to play Für Elise.</p>
+<p>I spent 15 hours on this lab.</p>
+</section>
+<section id="ai-prototype-summary" class="level2">
+<h2 class="anchored" data-anchor-id="ai-prototype-summary">AI Prototype summary</h2>
+<p>I used ChatGPT to complete this AI prototype. AI did a great job on extracting the information from the datasheet, as shown in <a href="#fig-ai" class="quarto-xref">Figure&nbsp;3</a>. It is much faster to use AI to get information from reference manual compared to me reading through it. It’s performance is better than Gemini’s performance on generating HDL code.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>AI result
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div id="fig-ai" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ai-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/ai.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ai-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Table produced by AI
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
 
 
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="cmVmbGVjdGlvbiUyQ2xhYnJlcG9ydA==" data-listing-date-sort="1790751600000" data-listing-file-modified-sort="1790783023910" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="406">
-<div class="thumbnail"><a href="./labs/lab4/lab4.html" class="no-external">
-
-<p class="card-img-top"><img loading='lazy' src="labs\lab4\images\accuracy.png"  class="thumbnail-image card-img"/></p>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./labs/lab4/lab4.html" class="no-external">Lab 4 - Digital Audio</a>
-</h3>
-<div class="delink listing-description"><a href="./labs/lab4/lab4.html" class="no-external">
-<p>Using C code to play music!</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./labs/lab4/lab4.html" class="no-external">
-<div class="listing-date">
-Sep 30, 2026
-</div>
-<div class="listing-author">
-Ellen Yu
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="cmVmbGVjdGlvbiUyQ2xhYnJlcG9ydA==" data-listing-date-sort="1790060400000" data-listing-file-modified-sort="1790200735770" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1019">
-<div class="thumbnail"><a href="./labs/lab3/lab3.html" class="no-external">
-
-<p class="card-img-top"><img loading='lazy' src="labs\lab3\images\main_fsm.png"  class="thumbnail-image card-img"/></p>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./labs/lab3/lab3.html" class="no-external">Lab 3 - Keypad Scanner</a>
-</h3>
-<div class="delink listing-description"><a href="./labs/lab3/lab3.html" class="no-external">
-<p>Display the value of the pressed key on the seven segment display!</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./labs/lab3/lab3.html" class="no-external">
-<div class="listing-date">
-Sep 22, 2026
-</div>
-<div class="listing-author">
-Ellen Yu
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="cmVmbGVjdGlvbiUyQ2xhYnJlcG9ydA==" data-listing-date-sort="1789455600000" data-listing-file-modified-sort="1790174985411" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1265">
-<div class="thumbnail"><a href="./labs/lab2/lab2.html" class="no-external">
-
-<p class="card-img-top"><img loading='lazy' src="labs\lab2\images\block_diagram.png"  class="thumbnail-image card-img"/></p>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./labs/lab2/lab2.html" class="no-external">Lab 2 - Multiplexed 7-Segment Display</a>
-</h3>
-<div class="delink listing-description"><a href="./labs/lab2/lab2.html" class="no-external">
-<p>First thing when debugging – ALWAYS CHECK POWER</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./labs/lab2/lab2.html" class="no-external">
-<div class="listing-date">
-Sep 15, 2026
-</div>
-<div class="listing-author">
-Ellen Yu
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="cmVmbGVjdGlvbiUyQ2xhYnJlcG9ydA==" data-listing-date-sort="1788246000000" data-listing-file-modified-sort="1789535096859" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1497">
-<div class="thumbnail"><a href="./labs/lab1/lab1.html" class="no-external">
-
-<p class="card-img-top"><img loading='lazy' src="labs\lab1\images\block_dia.png"  class="thumbnail-image card-img"/></p>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./labs/lab1/lab1.html" class="no-external">Lab 1 - Board Assembly and Testing</a>
-</h3>
-<div class="delink listing-description"><a href="./labs/lab1/lab1.html" class="no-external">
-<p>Hardest thing turns out to be computer not connecting to hardware…</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./labs/lab1/lab1.html" class="no-external">
-<div class="listing-date">
-Sep 1, 2026
-</div>
-<div class="listing-author">
-Ellen Yu
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
