@@ -20,7 +20,7 @@ The design for this lab uses the clock on an MCU to play Für Elise.
 ## Design and Testing Methodology
 This design uses the timer 15 and timer 16 to control the pitch and duration of each note. Timer 15 controls duration and timer 16 controls note pitch.
 
-Both timers uses a 80 MHz clock, which is brought up by PPL from a 4 MHz clock. The conversion from note frequency to timer 16 configurations are shown as follows:
+Both timers use a 80 MHz clock, which is brought up by PPL from a 4 MHz clock. The conversion from note frequency to timer 16 configurations are shown as follows:
 
 $note frequency * 2 = \frac {clk frequency}{(ARR + 1)(PSC + 1)}$
 
@@ -76,7 +76,7 @@ I spent 15 hours on this lab.
 
 ## AI Prototype summary
 
-I used ChatGPT to complete this AI prototype. AI did a great job on extracting the information from the datasheet, as shown in @fig-ai. It is much faster to use AI to get information from reference manual compared to me reading through it. It's performance is better than Gemini's performance on generating HDL code. 
+I used ChatGPT to complete this AI prototype. AI did a great job on extracting the information from the datasheet, as shown in @fig-ai. It is much faster to use AI to get information from a reference manual compared to me reading through it. It's performance is better than Gemini's performance on generating HDL code. 
 
 ::: {.callout-note collapse="true"}
 ## AI result
