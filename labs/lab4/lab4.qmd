@@ -1,0 +1,43 @@
+---
+title: "Lab 4 - Digital Audio"
+description: "Using C code to play music!"
+author: "Ellen Yu"
+date: "9/30/26"
+categories:
+  - reflection
+  - labreport
+draft: false
+--- 
+## Introduction
+The design for this lab uses the clock on an MCU to play Für Elise.
+
+## Design and Testing Methodology
+This design uses the timer 15 and timer 16 to control the pitch and duration of each note. Timer 15 controls duration and timer 16 controls note pitch.
+
+Both timers uses a 80M Hz clock, which is brought up by PPL from a 4M Hz clock. The conversion from note frequency to timer 16 configurations are shown as follows:
+
+$note frequency * 2 = \frac {clk frequency}{(ARR + 1)(PSC + 1)}$
+
+The implementation toggles the output at twice the note frequency to produce a square wave at the desired frequency. This implementation chooses PSC to be 79 for timer 16. Since ARR is 16 bits, the highest number it can represent is $2^{16}-1$. Therefore, the highest frequency that this implementation supports is: 
+
+$\frac {80000000}{(1)(80)(2)}$ = 500000 Hz
+
+The lowest note frequency that this implmentation supports is:
+
+$\frac {80000000}{(2^{16})(80)(2)}$ = 8 Hz
+
+::: {.callout-note collapse="true"}
+## All notes frequencies in Für Elise with percent error
+![All notes frequencies in Für Elise with percent error calculation](images/accuracy.png){#fig-accuracy}
+::: 
+
+As shown in @fig-accuracy, the implementation is capable of replicating all notes in Für Elise within 1% accuracy.
+
+
+The conversion from note duration to timer 15 configurations are shown as follows:
+
+$duration = \frac {(ARR)(PSC+1)}{(80000000)}$
+
+In code implementation divides by 80000 instead as the reference durations are provided in milliseconds. This design chooses PSC to be 7999 for timer 15. Since ARR is 16 bits, the highest number it can represent is $2^{16}-1$.
+
+The maximum duration supported by this design is
