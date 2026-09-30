@@ -40,4 +40,39 @@ $duration = \frac {(ARR)(PSC+1)}{(80000000)}$
 
 In code implementation divides by 80000 instead as the reference durations are provided in milliseconds. This design chooses PSC to be 7999 for timer 15. Since ARR is 16 bits, the highest number it can represent is $2^{16}-1$.
 
-The maximum duration supported by this design is
+The maximum duration supported by this design is:
+
+$duration = \frac {(2^{16}-1)(7999+1)}{(80000)}$ = 6553.5 millisecond
+
+
+The maximum duration supported by this design is:
+
+$duration = \frac {(0)(7999+1)}{(80000)}$ = 0 millisecond
+
+## Technical Documentation
+
+The source code for the project can be found in the associated [Github repository](https://github.com/Teemooooooooo/e155-lab4).
+
+### Schematic
+
+::: {.callout-note collapse="true"}
+## Schematic of the Design
+![Schematic of the Design](images/schematic.png){#fig-schematic}
+::: 
+
+The schematic in @fig-schematic shows the physical layout of the MCU to speaker connection. The circuit design is based on the information found on the datasheet of the speaker. 
+
+## Conclusion
+
+The design successfully drived a speaker to play Für Elise. 
+
+I spent 15 hours on this lab.
+
+## AI Prototype summary
+
+I used ChatGPT to complete this AI prototype. AI did a great job on extracting the information from the datasheet, as shown in @fig-ai. It is much faster to use AI to get information from reference manual compared to me reading through it. It's performance is better than Gemini's performance on generating HDL code. 
+
+::: {.callout-note collapse="true"}
+## AI result
+![Table produced by AI](images/ai.png){#fig-ai}
+:::
