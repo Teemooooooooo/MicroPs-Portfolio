@@ -241,11 +241,11 @@ window.Quarto = {
 <section id="design-and-testing-methodology" class="level2">
 <h2 class="anchored" data-anchor-id="design-and-testing-methodology">Design and Testing Methodology</h2>
 <p>This design uses the timer 15 and timer 16 to control the pitch and duration of each note. Timer 15 controls duration and timer 16 controls note pitch.</p>
-<p>Both timers uses a 80M Hz clock, which is brought up by PPL from a 4M Hz clock. The conversion from note frequency to timer 16 configurations are shown as follows:</p>
+<p>Both timers use a 80 MHz clock, which is brought up by PPL from a 4 MHz clock. The conversion from note frequency to timer 16 configurations are shown as follows:</p>
 <p><span class="math inline">\(note frequency * 2 = \frac {clk frequency}{(ARR + 1)(PSC + 1)}\)</span></p>
 <p>The implementation toggles the output at twice the note frequency to produce a square wave at the desired frequency. This implementation chooses PSC to be 79 for timer 16. Since ARR is 16 bits, the highest number it can represent is <span class="math inline">\(2^{16}-1\)</span>. Therefore, the highest frequency that this implementation supports is:</p>
 <p><span class="math inline">\(\frac {80000000}{(1)(80)(2)}\)</span> = 500000 Hz</p>
-<p>The lowest note frequency that this implmentation supports is:</p>
+<p>The lowest note frequency that this implementation supports is:</p>
 <p><span class="math inline">\(\frac {80000000}{(2^{16})(80)(2)}\)</span> = 8 Hz</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
@@ -316,12 +316,12 @@ Figure&nbsp;2: Schematic of the Design
 </section>
 <section id="conclusion" class="level2">
 <h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>The design successfully drived a speaker to play Für Elise.</p>
+<p>The design successfully drove a speaker to play Für Elise.</p>
 <p>I spent 15 hours on this lab.</p>
 </section>
 <section id="ai-prototype-summary" class="level2">
 <h2 class="anchored" data-anchor-id="ai-prototype-summary">AI Prototype summary</h2>
-<p>I used ChatGPT to complete this AI prototype. AI did a great job on extracting the information from the datasheet, as shown in <a href="#fig-ai" class="quarto-xref">Figure&nbsp;3</a>. It is much faster to use AI to get information from reference manual compared to me reading through it. It’s performance is better than Gemini’s performance on generating HDL code.</p>
+<p>I used ChatGPT to complete this AI prototype. AI did a great job on extracting the information from the datasheet, as shown in <a href="#fig-ai" class="quarto-xref">Figure&nbsp;3</a>. It is much faster to use AI to get information from a reference manual compared to me reading through it. It’s performance is better than Gemini’s performance on generating HDL code.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
