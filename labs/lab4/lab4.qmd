@@ -11,6 +11,12 @@ draft: false
 ## Introduction
 The design for this lab uses the clock on an MCU to play Für Elise.
 
+::: {.callout-note collapse="true"}
+## Demo video for Ace Attorney: Objection!
+![Demo video](ace.mov)
+
+:::
+
 ## Design and Testing Methodology
 This design uses the timer 15 and timer 16 to control the pitch and duration of each note. Timer 15 controls duration and timer 16 controls note pitch.
 
