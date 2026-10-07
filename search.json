@@ -7,179 +7,60 @@
     "text": "I just finished lab 3 check-in! I failed to defend my eight hours of sleep this week. I think the shortest sleep this week happened when I stayed up until 3:30 am in the digital lab and then woke up at 7:30 for the RISC-V Test Plan meeting.\nAnyways I want to talk about what I learned from this lab before I forget! The most significant issue that I ran into is the signals getting their value in mismatching clock ticks.\nFor example, my first major issue was that my seven-segment display would always show 00 (which is the default display value) whenever two buttons are pressed at the same time. My first instinct was to reason it out: The display is only supposed to update when the update signal is high, and the update signal going high depends on other signals produced by the other modules. To isolate the problem, I started by checking each module individually. I did not use assert statements, but I added input signals to simulate some cases and used the waveform to confirm that the signals are behaving correctly. Each individual module are working as expected. This led me to think that the issue can be something with timing — mismatching between what signal is set to high at which clock tick.\nThe final clue was found in Figure 1. By looking at the update signal, the s_next, s0 and s1 signals side by side, one can tell that the s_next state already changes to the new value when the main FSM sets the update signal. To address this issue, I introduced another flop to delay s_next by one clock cycle so that it matches with the control signals.\n\n\n\n\n\n\nFigure 1: Waveform of the top module\n\n\n\nI had another major issue that I needed to debug: Every press that I exert gets registered multiple times. Again, I checked every module individually and verified their functionality, so the largest possible cause of failure is timing mismatch again. This time I do have a vague idea of where the issue might be: The fact that I am using r_sync as the enable signal into my flops that read column outputs from the keypad provides an easy way to fail: if data timing does not match the exact timing when the flop updates (for example, if the scanner moves on to the next row before the enable signal for the previous row turns off), the one key press can potentially be accidentally recorded as multiple key presses. This turned out to be the issue for me and it was fixed by adding a read signal connecting to the r_sync to ensure that the data only updates when somewhere in the middle of the the intended reading time.\nFor this lab, I started most of by debugging by flashing my code to hardware. Comparing to debugging using testbenches, hardware gives a physical intuition of how the design should function and where might have issue. It provides a good starting point for debugging. I then use test bench to trace down more specific signals. The challenge with starting with test bench is that the test bench is not necessarily correct and it would be even harder trying to debug two things at the same time :(.\nBy the way I produced pretty nice block diagram and it did not take very long this time! I think the block diagram I drew for system-on-chip actually left something in my brain.\nThe block diagram from SOC:\n\n\n\n\n\n\nFigure 2: Block diagram from SOC"
   },
   {
-    "objectID": "posts/first-post.html",
-    "href": "posts/first-post.html",
-    "title": "First Post: Goals of the Semester",
+    "objectID": "posts/lab_4_and_5.html",
+    "href": "posts/lab_4_and_5.html",
+    "title": "After finishing 2 C labs",
     "section": "",
-    "text": "Hi! This is going to be my first post on the Blog! I am hoping to experiment more about how to design as well as use microprocessors to build cool things. Time to pick up all the System Verilog syntax that left my brain right after E85…"
+    "text": "Hi! This is the blog post for lab 4 and 5 because I did not have time to do one for last week when I finished lab 4. I spent many hours working on research instead and now I am done with my interrupts test suite for RISC-V :)\nAnyways, lab 4 and 5 had a focus of coding in C. It took me quite a bit of time to get my head around how to code in software again after spending a whole semester, the summer and all the previous labs writing hardware code. I will try to write cleaner C code for project - I have not put much effort to keeping my code clean for lab 4 and lab 5, which has been causing problems when I try to debug. I also need to get more used to the segger debug tool because it is harder to just logic out what was wrong with my mode by looking at hardware behavior here :("
   },
   {
-    "objectID": "posts/first-post.html#some-goals-of-this-semester-include",
-    "href": "posts/first-post.html#some-goals-of-this-semester-include",
-    "title": "First Post: Goals of the Semester",
-    "section": "Some goals of this semester include:",
-    "text": "Some goals of this semester include:\n\nGetting more familiar with Git/Github\nWrite better styled code\nTry to build something fun!"
-  },
-  {
-    "objectID": "labs/lab5/lab5.html",
-    "href": "labs/lab5/lab5.html",
-    "title": "Lab 5 - Interrupts",
+    "objectID": "posts/first-lab.html",
+    "href": "posts/first-lab.html",
+    "title": "After the First Lab: New Goals of the Semester",
     "section": "",
-    "text": "The design for this lab senses quadrature encoder pulses and convert those pulses into a motor velocity. It displays the motor speed in rps and the direction of velocity.\n\n\n\n\n\n\nNoteDemo video for the design\n\n\n\n\n\n\n\nVideo\nDemo video"
+    "text": "Yay! I am writing this blog right after I finished by lab report for by first lab! After spending around 30 hours on that lab I decided that the most important goal of this semester is going to be TRY TO DEFEND MY 8 HOURS OF SLEEP EVERY NIGHT\nGoing to try to start looking at the next lab and try to come up with an estimation of how long it will take!"
   },
   {
-    "objectID": "labs/lab5/lab5.html#introduction",
-    "href": "labs/lab5/lab5.html#introduction",
-    "title": "Lab 5 - Interrupts",
+    "objectID": "labs/lab4/lab4.html",
+    "href": "labs/lab4/lab4.html",
+    "title": "Lab 4 - Digital Audio",
     "section": "",
-    "text": "The design for this lab senses quadrature encoder pulses and convert those pulses into a motor velocity. It displays the motor speed in rps and the direction of velocity.\n\n\n\n\n\n\nNoteDemo video for the design\n\n\n\n\n\n\n\nVideo\nDemo video"
+    "text": "The design for this lab uses the clock on an MCU to play Für Elise.\n\n\n\n\n\n\nNoteDemo video for Ace Attorney: Objection!\n\n\n\n\n\n\n\nVideo\nDemo video"
   },
   {
-    "objectID": "labs/lab5/lab5.html#design-and-testing-methodology",
-    "href": "labs/lab5/lab5.html#design-and-testing-methodology",
-    "title": "Lab 5 - Interrupts",
+    "objectID": "labs/lab4/lab4.html#introduction",
+    "href": "labs/lab4/lab4.html#introduction",
+    "title": "Lab 4 - Digital Audio",
+    "section": "",
+    "text": "The design for this lab uses the clock on an MCU to play Für Elise.\n\n\n\n\n\n\nNoteDemo video for Ace Attorney: Objection!\n\n\n\n\n\n\n\nVideo\nDemo video"
+  },
+  {
+    "objectID": "labs/lab4/lab4.html#design-and-testing-methodology",
+    "href": "labs/lab4/lab4.html#design-and-testing-methodology",
+    "title": "Lab 4 - Digital Audio",
     "section": "Design and Testing Methodology",
-    "text": "Design and Testing Methodology\nThis design uses the timer 2 to control the time gap between each display of velocity and direction. This design chooses to display the velocity every 1 second. The internal clock used is 80 MHz, with a prescalar value of 7999, one second passes when the counter value goes from 0 to 9999. Therefore, print logic is executed every time when the timer counter values gets to 9999.\nInterrupt is trigger whenever an edge is detected in either signal A or B and the interrupt handler increments the count. Therefore, each pulse from the motor encoder causes the count variable to increment four times. Since count gets reset every 1 second and the datasheet states that the motor emits 408 pulses per revolution, the velocity of the motor can be calculated by:\n\\(speed = count / (4 * 408)\\)\nIn terms of determining the direction of the motor, since the two signals A and B are 90 degrees out of phase, the direction the motor spins can be found by comparing whether A == B at the time of interrupt based on which signal’s edge triggered the interrupt, as shown in Figure 1.\n\n\n\n\n\n\nNoteWave signal showing A and B when motor moves in different directions\n\n\n\n\n\n\n\n\n\n\n\nFigure 1: Wave signal showing A and B when motor moves in different directions\n\n\n\n\n\n\nHaving the interrupt to trigger at each edge of both signal A and B allows for a more precise measurement of velocity since the count value gets incremented at four evenly spaced times within one pulse time of the motor due to the fact that A and B are 90 degrees out of phase with each other.\nAt high speeds, using polling may cause some of the pulses to be missed because of the fact that printing the outputs takes a relative long time. Interrupt would still be able to capture the pulses at high speed, with the cost of using more hardware. The internet suggests that the print statement takes around 5 microsecond. If the motor is spinning at 2 rev per second, there would be 816 pulses within one second. The timing between these pulses would be given by \\(1/816 = 1.2 ms\\). This means that some of the pulses might be missed because the software is still printing. Interrupt would not have this issue and remain functional."
+    "text": "Design and Testing Methodology\nThis design uses the timer 15 and timer 16 to control the pitch and duration of each note. Timer 15 controls duration and timer 16 controls note pitch.\nBoth timers use a 80 MHz clock, which is brought up by PPL from a 4 MHz clock. The conversion from note frequency to timer 16 configurations are shown as follows:\n\\(note frequency * 2 = \\frac {clk frequency}{(ARR + 1)(PSC + 1)}\\)\nThe implementation toggles the output at twice the note frequency to produce a square wave at the desired frequency. This implementation chooses PSC to be 79 for timer 16. Since ARR is 16 bits, the highest number it can represent is \\(2^{16}-1\\). Therefore, the highest frequency that this implementation supports is:\n\\(\\frac {80000000}{(1)(80)(2)}\\) = 500000 Hz\nThe lowest note frequency that this implementation supports is:\n\\(\\frac {80000000}{(2^{16})(80)(2)}\\) = 8 Hz\n\n\n\n\n\n\nNoteAll notes frequencies in Für Elise with percent error\n\n\n\n\n\n\n\n\n\n\n\nFigure 1: All notes frequencies in Für Elise with percent error calculation\n\n\n\n\n\n\nAs shown in Figure 1, the implementation is capable of replicating all notes in Für Elise within 1% accuracy.\nThe conversion from note duration to timer 15 configurations are shown as follows:\n\\(duration = \\frac {(ARR)(PSC+1)}{(80000000)}\\)\nIn code implementation divides by 80000 instead as the reference durations are provided in milliseconds. This design chooses PSC to be 7999 for timer 15. Since ARR is 16 bits, the highest number it can represent is \\(2^{16}-1\\).\nThe maximum duration supported by this design is:\n\\(duration = \\frac {(2^{16}-1)(7999+1)}{(80000)}\\) = 6553.5 millisecond\nThe maximum duration supported by this design is:\n\\(duration = \\frac {(0)(7999+1)}{(80000)}\\) = 0 millisecond"
   },
   {
-    "objectID": "labs/lab5/lab5.html#technical-documentation",
-    "href": "labs/lab5/lab5.html#technical-documentation",
-    "title": "Lab 5 - Interrupts",
+    "objectID": "labs/lab4/lab4.html#technical-documentation",
+    "href": "labs/lab4/lab4.html#technical-documentation",
+    "title": "Lab 4 - Digital Audio",
     "section": "Technical Documentation",
-    "text": "Technical Documentation\nThe source code for the project can be found in the associated Github repository.\n\nSchematic\nThe schematic in Figure 2 shows the physical layout of the MCU to motor connection. The circuit design is based on the information found on the datasheet of the motor.\n\n\n\n\n\n\nNoteSchematic of the Design\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: Schematic of the Design\n\n\n\n\n\n\nThe schematic in Figure 3 shows the flow of code logic.\n\n\n\n\n\n\nNoteFlowchart of the Design\n\n\n\n\n\n\n\n\n\n\n\nFigure 3: Flowchart of the Design"
+    "text": "Technical Documentation\nThe source code for the project can be found in the associated Github repository.\n\nSchematic\n\n\n\n\n\n\nNoteSchematic of the Design\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: Schematic of the Design\n\n\n\n\n\n\nThe schematic in Figure 2 shows the physical layout of the MCU to speaker connection. The circuit design is based on the information found on the datasheet of the speaker."
   },
   {
-    "objectID": "labs/lab5/lab5.html#conclusion",
-    "href": "labs/lab5/lab5.html#conclusion",
-    "title": "Lab 5 - Interrupts",
+    "objectID": "labs/lab4/lab4.html#conclusion",
+    "href": "labs/lab4/lab4.html#conclusion",
+    "title": "Lab 4 - Digital Audio",
     "section": "Conclusion",
-    "text": "Conclusion\nThe design successfully display the motor velocity and direction.\nI spent 10 hours on this lab."
+    "text": "Conclusion\nThe design successfully drove a speaker to play Für Elise.\nI spent 15 hours on this lab."
   },
   {
-    "objectID": "labs/lab5/lab5.html#ai-prototype-summary",
-    "href": "labs/lab5/lab5.html#ai-prototype-summary",
-    "title": "Lab 5 - Interrupts",
+    "objectID": "labs/lab4/lab4.html#ai-prototype-summary",
+    "href": "labs/lab4/lab4.html#ai-prototype-summary",
+    "title": "Lab 4 - Digital Audio",
     "section": "AI Prototype summary",
-    "text": "AI Prototype summary\nI used ChatGPT to produce the code and it was able to build in segger. The LLM did not set up a clock because the prompt did not ask for the specifics of when the interface need to display values. I kept all my variables at 32 bits while the code produced by LLM has the variables at different bit length."
-  },
-  {
-    "objectID": "labs/lab3/lab3.html",
-    "href": "labs/lab3/lab3.html",
-    "title": "Lab 3 - Keypad Scanner",
-    "section": "",
-    "text": "The design for this lab has the following features:\n\nA dual seven-segment display that shows the last two hexadecimal digit pressed on the keypad, with the most recent entry appearing at the right\nA keypad that takes user input with each press recorded exactly once\nThe display value should not update if additional keys are pressed while still holding down the first key\n\n\n\n\n\n\n\nNoteDemo video\n\n\n\n\n\n\n\nVideo\nDemo video"
-  },
-  {
-    "objectID": "labs/lab3/lab3.html#introduction",
-    "href": "labs/lab3/lab3.html#introduction",
-    "title": "Lab 3 - Keypad Scanner",
-    "section": "",
-    "text": "The design for this lab has the following features:\n\nA dual seven-segment display that shows the last two hexadecimal digit pressed on the keypad, with the most recent entry appearing at the right\nA keypad that takes user input with each press recorded exactly once\nThe display value should not update if additional keys are pressed while still holding down the first key\n\n\n\n\n\n\n\nNoteDemo video\n\n\n\n\n\n\n\nVideo\nDemo video"
-  },
-  {
-    "objectID": "labs/lab3/lab3.html#design-and-testing-methodology",
-    "href": "labs/lab3/lab3.html#design-and-testing-methodology",
-    "title": "Lab 3 - Keypad Scanner",
-    "section": "Design and Testing Methodology",
-    "text": "Design and Testing Methodology\nThe HSOSC at a frequency of 48 MHz is used to generate the clock input into the multiplex counter and the scanning module. From researching, it was learned that the threshold frequency at which human will not be able to detect blinking is 60 Hz. Therefore, the multiplex counter is used to reduce the 48 MHz clock down to a 60 Hz slower clock.\nA synchronizer is used to handle asynchronous column reading, and the same synchronizer is applied to the already synchronous row readings to ensure the column and row values match when mapping the readings to the key values.\n\n\n\n\n\n\nNoteMain FSM\n\n\n\n\n\n\n\n\n\n\n\nFigure 1: State transition diagram and next state logic of the main FSM\n\n\n\n\n\n\n\n\n\n\n\n\nNoteDebounce FSM\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: State transition diagram and next state logic of the debounce FSM\n\n\n\n\n\n\nThe design includes various finite state machines that communicate with each other. Two of the main canonical FSMs implemented are the main FSM that controls the update logic of the seven-segment display and the debounce FSM that handles switch bouncing. The state transition diagram and the next state logic of the two FSMs are shown in Figure 1 and Figure 2.\nThe debounce module outputs the d_en signal that indicates at least one key is actually being pressed and the switch is no longer bouncing. This signal allows the main FSM to transition to the PRESSED stage. In the PRESSED state, the main FSM send a update signal to the seven-segment display input selection module(sev_seg_input) to update the input into the seven segment display. This design divides up the signals cleanly and only requires FSMs with at most 3 states. Other designs may involve fewer finite state machines with more states, which can cause the state transition conditions to be more complicated.\nThe debounce module handles switch debouncing by blocking the main FSM from updating the display.The main FSM will only update the display if the debounce module set d_en signal to high. Debounce module sets d_en only when the input switch has been pressed for long enough. This debounce module handles switch debounce at the cost of filtering out super short clicks. Physically, any press would last for a time that is way longer than the switch bouncing period, therefore this design does work successfully."
-  },
-  {
-    "objectID": "labs/lab3/lab3.html#technical-documentation",
-    "href": "labs/lab3/lab3.html#technical-documentation",
-    "title": "Lab 3 - Keypad Scanner",
-    "section": "Technical Documentation",
-    "text": "Technical Documentation\nThe source code for the project can be found in the associated Github repository.\n\nBlock Diagram\n\n\n\n\n\n\nNoteTop Level Block Diagram\n\n\n\n\n\n\n\n\n\n\n\nFigure 3: Block Diagram of the Top Level\n\n\n\n\n\n\nThe block diagram in Figure 3 shows the overall architecture of the design. The lab3_ey module is the top level module.\n\n\n\n\n\n\nNoteBlock Diagram of Synchronizer\n\n\n\n\n\n\n\n\n\n\n\nFigure 4: Block Diagram of the Synchronizer Module\n\n\n\n\n\n\nThe block diagram of the synchronizer module is shown in Figure 4.\n\n\n\n\n\n\nNoteBlock Diagram of Reading to Key Encoding Module\n\n\n\n\n\n\n\n\n\n\n\nFigure 5: Block Diagram of the Reading to Key Encoding Module\n\n\n\n\n\n\nThe block diagram of the module that converts row and column reading into 16-bit one-hot encoding and binary value (row_col_to_binary) is shown in Figure 5.\n\n\nSchematic\n\n\n\n\n\n\nNoteSchematic of the Design\n\n\n\n\n\n\n\n\n\n\n\nFigure 6: Schematic of the Design\n\n\n\n\n\n\nThe schematic in Figure 6 shows the physical layout of the UPduino to the seven-segment display and keypad connection. The calculation of the resistor values can be found in lab 2 report."
-  },
-  {
-    "objectID": "labs/lab3/lab3.html#result-and-discussion",
-    "href": "labs/lab3/lab3.html#result-and-discussion",
-    "title": "Lab 3 - Keypad Scanner",
-    "section": "Result and Discussion",
-    "text": "Result and Discussion\n\nTestbench Simulation\nThere are a total of 6 testbenches written, testing functionality of the top-level module and the new modules. The modules that were already tested from previous labs are not retested.\n\n\n\n\n\n\nNotetop level waveform\n\n\n\n\n\n\n\n\n\n\n\nFigure 7: Top-level module with all tests passing\n\n\n\n\n\n\n\n\n\nFigure 8: Waveform simulation\n\n\n\n\n\n\n\n\n\nFigure 9: Waveform simulation\n\n\n\n\n\n\n\n\n\nFigure 10: Waveform simulation\n\n\n\n\n\n\nThe waveform simulation and test results of the top-level module are shown in Figure 8, Figure 9, Figure 10 and Figure 7. This testbench includes a simulated key press with switch bouncing. The DUT exhibits expected behavior for all test cases.\n\n\n\n\n\n\nNoteDebounce module waveform\n\n\n\n\n\n\n\n\n\n\n\nFigure 11: Debounce module with all tests passing\n\n\n\n\n\n\n\n\n\nFigure 12: Waveform simulation\n\n\n\n\n\n\n\n\n\nFigure 13: Waveform simulation\n\n\n\n\n\n\nThe waveform simulation and test results of the debounce module are shown in Figure 12, Figure 13 and Figure 11. The DUT exhibits expected behavior for all test cases.\n\n\n\n\n\n\nNoteMain FSM module waveform\n\n\n\n\n\n\n\n\n\n\n\nFigure 14: main FSM module with all tests passing\n\n\n\n\n\n\n\n\n\nFigure 15: Waveform simulation\n\n\n\n\n\n\n\n\n\nFigure 16: Waveform simulation\n\n\n\n\n\n\nThe waveform simulation and test results of the main FSM module are shown in Figure 15, Figure 16 and Figure 14. The DUT exhibits expected behavior for all test cases.\n\n\n\n\n\n\nNoteReading to encoding module waveform\n\n\n\n\n\n\n\n\n\n\n\nFigure 17: Reading to encoding module with all tests passing\n\n\n\n\n\n\n\n\n\nFigure 18: Waveform simulation\n\n\n\n\n\n\nThe waveform simulation and test results of the reading to encoding module (row_col_to_binary) are shown in Figure 18 and Figure 17. The DUT exhibits expected behavior for all test cases.\n\n\n\n\n\n\nNoteSeven-segment display input selection module waveform\n\n\n\n\n\n\n\n\n\n\n\nFigure 19: sev_seg_input module with all tests passing\n\n\n\n\n\n\n\n\n\nFigure 20: Waveform simulation\n\n\n\n\n\n\nThe waveform simulation and test results of the seven-segment display input selection module are shown in Figure 20 and Figure 19. The DUT exhibits expected behavior for all test cases.\n\n\n\n\n\n\nNoteSynchronizer module waveform\n\n\n\n\n\n\n\n\n\n\n\nFigure 21: Synchronizer with all tests passing\n\n\n\n\n\n\n\n\n\nFigure 22: Waveform simulation\n\n\n\n\n\n\nThe waveform simulation and test results of the synchronizer module are shown in Figure 22 and Figure 21. The DUT exhibits expected behavior for all test cases.\n\n\n\n\n\n\nNoteDebounce module waveform\n\n\n\n\n\n\n\n\n\n\n\nFigure 23: Synthesizer output reporting no latches or tristate buffers\n\n\n\n\n\n\nSynthesizer output in Figure 23 showing that design has no latches and no tristate buffers."
-  },
-  {
-    "objectID": "labs/lab3/lab3.html#conclusion",
-    "href": "labs/lab3/lab3.html#conclusion",
-    "title": "Lab 3 - Keypad Scanner",
-    "section": "Conclusion",
-    "text": "Conclusion\nThe design successfully drived a time-multiplexed seven-segment display based on keypad input.\nI spent 38 hours on this lab."
-  },
-  {
-    "objectID": "labs/lab3/lab3.html#ai-prototype-summary",
-    "href": "labs/lab3/lab3.html#ai-prototype-summary",
-    "title": "Lab 3 - Keypad Scanner",
-    "section": "AI Prototype summary",
-    "text": "AI Prototype summary\nI used Gemini to produce the code. I attempted the AI prototype and the quality is not great. The code that was first produced had some typos in it so the synthesize fails. I then fed back the error message into the LLM for around 5 more times and the LLM is still not able to fix it. This was the case for both prompts.\nThe LLM was also using functions in the produced code. I am not familiar with the use of this syntax therefore it was hard for me to understand the produced code."
-  },
-  {
-    "objectID": "labs/lab1/lab1.html",
-    "href": "labs/lab1/lab1.html",
-    "title": "Lab 1 - Board Assembly and Testing",
-    "section": "",
-    "text": "The design for this lab has the following features:\n\n4 switch inputs that control 2 LEDs and a 7-segment display\nAn LED that blinks at 2.4 Hz, controlled by HSOSC (onboard high-speed oscillator) that has a frequency of 48 MHz.\n\nThe four switches are viewed as 4 bits, and the seven-segment display shows the hexadecimal representation of the 4 bits."
-  },
-  {
-    "objectID": "labs/lab1/lab1.html#introduction",
-    "href": "labs/lab1/lab1.html#introduction",
-    "title": "Lab 1 - Board Assembly and Testing",
-    "section": "",
-    "text": "The design for this lab has the following features:\n\n4 switch inputs that control 2 LEDs and a 7-segment display\nAn LED that blinks at 2.4 Hz, controlled by HSOSC (onboard high-speed oscillator) that has a frequency of 48 MHz.\n\nThe four switches are viewed as 4 bits, and the seven-segment display shows the hexadecimal representation of the 4 bits."
-  },
-  {
-    "objectID": "labs/lab1/lab1.html#design-and-testing-methodology",
-    "href": "labs/lab1/lab1.html#design-and-testing-methodology",
-    "title": "Lab 1 - Board Assembly and Testing",
-    "section": "Design and Testing Methodology",
-    "text": "Design and Testing Methodology\nThe HSOSC at a frequency of 48 MHz is used to generate the clock input into the flash_led module. The flash_led module contains a counter that converts the 48 MHz signal into a signal that blinks at 2.4 Hz. The calculation for the counter maximum threshold is shown below:\nIn order for the LED to blink at 2.4 Hz, the signal sent to the LED need to be switching at a frequency of 4.8 Hz between 0 and 1. In order to produce the 4.8 Hz signal, calculate \\(48 MHz / 4.8 Hz\\) to determine that the maximum threshold of the counter needs to be \\(10^7\\). Then, set flash (the signal sent to the LED) to be equal to the opposite value that flash previously hold to blink the LED.\nFor the other LEDs and the seven-segment display, combinational logic is used to map switch inputs to outputs."
-  },
-  {
-    "objectID": "labs/lab1/lab1.html#technical-documentation",
-    "href": "labs/lab1/lab1.html#technical-documentation",
-    "title": "Lab 1 - Board Assembly and Testing",
-    "section": "Technical Documentation",
-    "text": "Technical Documentation\nThe source code for the project can be found in the associated Github repository.\n\nBlock Diagram\n\n\n\n\n\n\nNoteBlock Diagram\n\n\n\n\n\n\n\n\n\n\n\nFigure 1: Block Diagram of the System Verilog design\n\n\n\n\n\n\nThe block diagram in Figure 1 shows the overall architecture of the design. The lab1_ey module is the top-level module. It contains the switch-to-LED logic and three submodules: the high-speed oscillator block (HSOSC), flash LED module (flash_led), and the seven-segment display module (seven_seg).\n\n\nSchematic\n\n\n\n\n\n\nNoteSchematic of the seven-segment display\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: Schematic of the seven-segment display\n\n\n\n\n\n\nThe schematic in Figure 2 shows the physical layout of the UPduino to the seven-segment display connection. Each LED segment is connected to the output pin of UPduino using a 150-ohm current-limiting resistor (R) to ensure the output current does not burn the LED.\nThe resistor value calculation is shown below:\n\\(I_D = (V_{DD} - V_{on})/(R_s + R_D)\\)\nAssume \\(R_s\\) to be negligible, and from reading the datasheet, we get that\n\\(V_{dd} = 3.3 V\\)\n\\(V_{forward} = 2.1 V\\) for the LEDs, which is the \\(V_{on}\\) in the calculation.\n\\(I_D\\) is between 5 and 20 mA.\n\\(I_D = 8 mA\\) is chosen for this calculation. Plug in the numbers stated above, we get that \\(R_D = 150 ohm\\)"
-  },
-  {
-    "objectID": "labs/lab1/lab1.html#result-and-discussion",
-    "href": "labs/lab1/lab1.html#result-and-discussion",
-    "title": "Lab 1 - Board Assembly and Testing",
-    "section": "Result and Discussion",
-    "text": "Result and Discussion\n\nTestbench Simulation\nThere is one testbench for each module to verify that the design meets all intended objectives.\n\n\n\n\n\n\nNotecounter waveform\n\n\n\n\n\n\n\n\n\n\n\nFigure 3: Waveform simulation of counter module with all tests passing\n\n\n\n\n\n\n\n\n\nFigure 4: Waveform simulation of counter module at reset behavior\n\n\n\n\n\n\n\n\n\nFigure 5: Waveform simulation including counter at maximum counter behavior\n\n\n\n\n\n\n\n\n\n\n\n\nNoteSome tests from testbench code\n\n\n\n\n\n   // testing enable behavior (on)\n        enable = 1'b1;\n        reset = 1'b0;\n        #10;\n        reset = 1'b1;\n        #50;\n        assert (dut.counter == 24'b101)\n            $display(\"PASSED! Counter did not increment at time: %0t.\", $time);\n        else \n            $error(\"FAILED! Counter behaves incorrectly at time: %0t.\", $time); \n        \n        assert (flash == 'b0)\n            $display(\"PASSED! LED is off as expected: %0t.\", $time);\n        else \n            $error(\"FAILED! LED behaves incorrectly at time: %0t.\", $time); \n\n    // testing max counter behavior (LED on)\n        reset = 1'b0;\n        #10;\n        reset = 1'b1;\n        #100000000; // counter reach MAX_threshold\n        assert (dut.counter == 24'b0)\n            $display(\"PASSED! Counter got back to zero as expected: %0t.\", $time);\n        else\n            $display(\"FAILED! Counter has %0d at time: %0t.\", dut.counter, $time);\n        \n        assert (flash == 1'b1)\n            $display(\"PASSED! LED turned on as expected: %0t.\", $time);\n        else\n            $display(\"FAILED! LED has incorrect behavior at time: %0t.\", $time);\n    \n    // then wait another max LED should turn off\n        #100000000;\n        #10;\n        assert (flash == 1'b0)\n            $display(\"PASSED! LED turned off as expected at counter %0d: %0t.\", dut.counter, $time);\n        else\n            $display(\"FAILED! LED has incorrect behavior at time: %0t.\", $time);\n\n\n\nThe waveform simulation and test results of the flash LED module (flash_led) are shown in Figure 3, Figure 5 and Figure 4. This testbench covers the reset behavior, enable behavior, and the behavior at counter maximum threshold. The DUT exhibits expected behavior for all test cases.\n\n\n\n\n\n\nNoteseven-segment waveform\n\n\n\n\n\n\n\n\n\n\n\nFigure 6: Waveform simulation of the seven-segment display\n\n\n\n\n\n\nThe waveform simulation and the test results of the seven-segment display module (seven_seg) are shown in Figure 6. As shown, the testbench covers all 16 possible input combinations and their expected outputs and the DUT passes all test cases.\n\n\n\n\n\n\nNoteTop level waveform\n\n\n\n\n\n\n\n\n\n\n\nFigure 7: Top level with all outputs from submodules passing all tests\n\n\n\n\n\n\n\n\n\nFigure 8: Zoomed-out top level showing LED flashing\n\n\n\n\n\n\nThe top-level testbench is shown in Figure 7 and Figure 8. This testbench tests all cases of the switch-to-LED logic and the DUT does pass all test cases. This testbench also verifies that the connections to submodules are working properly as the flashing LED does exhibit expected behavior.\n\n\n\n\n\n\nNoteHSOSC timing\n\n\n\n\n\n\n\n\n\n\n\nFigure 9\n\n\n\n\n\n\n\n\n\nFigure 10\n\n\n\n\n\n\nThe testbench also shows the HSOSC working in the waveform. The frequency can be calculated as \\(1/ period = 1/(20 ns) = 50 MHz\\). This is close to the expected value of 48 MHz."
-  },
-  {
-    "objectID": "labs/lab1/lab1.html#conclusion",
-    "href": "labs/lab1/lab1.html#conclusion",
-    "title": "Lab 1 - Board Assembly and Testing",
-    "section": "Conclusion",
-    "text": "Conclusion\nThe design successfully blinked an on-board LED using the HSOSC and the switch inputs does correctly control the two LEDs and the seven-segment display.\nI spent 30 hours on this lab."
-  },
-  {
-    "objectID": "labs/lab1/lab1.html#ai-prototype-summary",
-    "href": "labs/lab1/lab1.html#ai-prototype-summary",
-    "title": "Lab 1 - Board Assembly and Testing",
-    "section": "AI Prototype summary",
-    "text": "AI Prototype summary\n\n\n\n\n\n\nNoteCode produced by AI\n\n\n\n\n\n// Top module name must match your project configuration: led_blink\nmodule led_blink (\n    output logic led\n);\n\n    logic clk_48m;\n\n    // Lattice Radiant Primitive for the High Speed Oscillator\n    HSOSC #(\n        .CLKHF_DIV(\"0b00\")  // \"0b00\" = 48 MHz, \"0b01\" = 24 MHz, \"0b10\" = 12 MHz, \"0b11\" = 6 MHz\n    ) hfosc_inst (\n        .CLKHFPU(1'b1),    // Power up oscillator\n        .CLKHFEN(1'b1),    // Enable clock output\n        .CLKHF  (clk_48m)  // Output clock signal\n    );\n\n    // 48,000,000 Hz / (2 * 2 Hz) = 12,000,000 cycles per toggle\n    localparam int TOGGLE_LIMIT = 12_000_000;\n   \n    logic [$clog2(TOGGLE_LIMIT)-1:0] counter = '0;\n\n    always_ff @(posedge clk_48m) begin\n        if (counter == TOGGLE_LIMIT - 1) begin\n            counter &lt;= '0;\n            led     &lt;= ~led;\n        end else begin\n            counter &lt;= counter + 1'b1;\n        end\n    end\n\nendmodule\n\n\n\nI used Gemini to produce this code. I would say that the quality of the code is very luck dependent. When I tried to do it with AI for the first time, it did not synthesize properly even when I fed the error message back into the LLM for 5 times. After I started a new chat, it made synthesizable code within 2 tries. The ’0 part of the code that AI generated is new to me. The code did not synthesize for the first time because of the HFOSC naming that is specific to the Lattice Radiant software. Radiant outputs “ERROR &lt;35901063&gt; - ../source/impl_1/led_blink.sv(18): instantiating unknown module SB_HFOSC. VERI-1063”. I would let the LLM know what software I am working with first if I use LLM in my workflow."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "E155 Portfolio",
-    "section": "",
-    "text": "Ellen Yu is an Engineering student at Harvey Mudd College focusing on Electrical and Computer Engineering. Her interests are in processor architecture, hardware design, and verification. As both an engineer and an artist, she enjoys transforming ideas into thoughtful, functional products."
-  },
-  {
-    "objectID": "blog.html",
-    "href": "blog.html",
-    "title": "E155 Blog",
-    "section": "",
-    "text": "Here are the blog posts through out the course!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLab 3 - Close one but done!\n\n\nTiming of signal is causing issues…\n\n\n\n\n\nSep 23, 2026\n\n\nEllen Yu\n\n\n\n\n\n\n\n\n\n\n\n\nLab 2 - Done!\n\n\nRemember to check power first when debugging…\n\n\n\n\n\nSep 17, 2026\n\n\nEllen Yu\n\n\n\n\n\n\n\n\n\n\n\n\nAfter the First Lab: New Goals of the Semester\n\n\nOkay I need to rethink my goals…\n\n\n\n\n\nSep 8, 2026\n\n\nEllen Yu\n\n\n\n\n\n\n\n\n\n\n\n\nFirst Post: Goals of the Semester\n\n\nListing the goals…\n\n\n\n\n\nAug 31, 2026\n\n\nEllen Yu\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "lab.html",
-    "href": "lab.html",
-    "title": "E155 Labs",
-    "section": "",
-    "text": "Here lists the lab reports of MicroPs.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLab 5 - Interrupts\n\n\nUsing interrupt to display motor speed!\n\n\n\n\n\nOct 6, 2026\n\n\nEllen Yu\n\n\n\n\n\n\n\n\n\n\n\n\nLab 4 - Digital Audio\n\n\nUsing C code to play music!\n\n\n\n\n\nSep 30, 2026\n\n\nEllen Yu\n\n\n\n\n\n\n\n\n\n\n\n\nLab 3 - Keypad Scanner\n\n\nDisplay the value of the pressed key on the seven segment display!\n\n\n\n\n\nSep 22, 2026\n\n\nEllen Yu\n\n\n\n\n\n\n\n\n\n\n\n\nLab 2 - Multiplexed 7-Segment Display\n\n\nFirst thing when debugging – ALWAYS CHECK POWER\n\n\n\n\n\nSep 15, 2026\n\n\nEllen Yu\n\n\n\n\n\n\n\n\n\n\n\n\nLab 1 - Board Assembly and Testing\n\n\nHardest thing turns out to be computer not connecting to hardware…\n\n\n\n\n\nSep 1, 2026\n\n\nEllen Yu\n\n\n\n\n\nNo matching items"
+    "text": "AI Prototype summary\nI used ChatGPT to complete this AI prototype. AI did a great job on extracting the information from the datasheet, as shown in Figure 3. It is much faster to use AI to get information from a reference manual compared to me reading through it. It’s performance is better than Gemini’s performance on generating HDL code.\n\n\n\n\n\n\nNoteAI result\n\n\n\n\n\n\n\n\n\n\n\nFigure 3: Table produced by AI"
   },
   {
     "objectID": "labs/lab2/lab2.html",
@@ -231,53 +112,179 @@
     "text": "AI Prototype summary\nI used Gemini to produce the code. I attempted the AI prototype and the quality is good. I tried to synthesize it and it worked on the first try. There is not any syntax in AI code that is not familiar to me. The prompting did not make a big difference as the AI already uses the provided file even when not explicitly asked to. I will consider whether AI will use the files I provided in the next time that I use LLM.\n\n\n\n\n\n\nNoteCode example produced by AI using prompt 1\n\n\n\n\n\nmodule time_mux_seven_seg #(\n    parameter COUNTER_SIZE = 25,\n    parameter MAX_THRESHOLD = 24'd10000000\n)(\n    input  logic       clk,\n    input  logic       reset,\n    input  logic       enable,\n    input  logic [3:0] in0,\n    input  logic [3:0] in1,\n    output logic [6:0] seg0,\n    output logic [6:0] seg1\n);\n\n    logic       select_display;\n    logic [3:0] mux_in;\n    logic [6:0] decoded_seg;\n\n    // Clock divider instantiation\n    counter #(\n        .COUNTER_SIZE(COUNTER_SIZE),\n        .MAX_THRESHOLD(MAX_THRESHOLD)\n    ) clk_div (\n        .clk(clk),\n        .reset(reset),\n        .enable(enable),\n        .slow_clk(select_display),\n        .counter\n    );\n\n    // Mux input selection\n    assign mux_in = select_display ? in1 : in0;\n\n    // Single shared decoder\n    seven_seg decoder (\n        .s(mux_in),\n        .seg(decoded_seg)\n    );\n\n    // Latch outputs for each display\n    always_ff @(posedge clk) begin\n        if (~reset) begin\n            seg0 &lt;= 7'b1111111;\n            seg1 &lt;= 7'b1111111;\n        end else begin\n            if (~select_display)\n                seg0 &lt;= decoded_seg;\n            else\n                seg1 &lt;= decoded_seg;\n        end\n    end\n\nendmodule"
   },
   {
-    "objectID": "labs/lab4/lab4.html",
-    "href": "labs/lab4/lab4.html",
-    "title": "Lab 4 - Digital Audio",
+    "objectID": "lab.html",
+    "href": "lab.html",
+    "title": "E155 Labs",
     "section": "",
-    "text": "The design for this lab uses the clock on an MCU to play Für Elise.\n\n\n\n\n\n\nNoteDemo video for Ace Attorney: Objection!\n\n\n\n\n\n\n\nVideo\nDemo video"
+    "text": "Here lists the lab reports of MicroPs.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLab 5 - Interrupts\n\n\nUsing interrupt to display motor speed!\n\n\n\n\n\nOct 6, 2026\n\n\nEllen Yu\n\n\n\n\n\n\n\n\n\n\n\n\nLab 4 - Digital Audio\n\n\nUsing C code to play music!\n\n\n\n\n\nSep 30, 2026\n\n\nEllen Yu\n\n\n\n\n\n\n\n\n\n\n\n\nLab 3 - Keypad Scanner\n\n\nDisplay the value of the pressed key on the seven segment display!\n\n\n\n\n\nSep 22, 2026\n\n\nEllen Yu\n\n\n\n\n\n\n\n\n\n\n\n\nLab 2 - Multiplexed 7-Segment Display\n\n\nFirst thing when debugging – ALWAYS CHECK POWER\n\n\n\n\n\nSep 15, 2026\n\n\nEllen Yu\n\n\n\n\n\n\n\n\n\n\n\n\nLab 1 - Board Assembly and Testing\n\n\nHardest thing turns out to be computer not connecting to hardware…\n\n\n\n\n\nSep 1, 2026\n\n\nEllen Yu\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "labs/lab4/lab4.html#introduction",
-    "href": "labs/lab4/lab4.html#introduction",
-    "title": "Lab 4 - Digital Audio",
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "E155 Blog",
     "section": "",
-    "text": "The design for this lab uses the clock on an MCU to play Für Elise.\n\n\n\n\n\n\nNoteDemo video for Ace Attorney: Objection!\n\n\n\n\n\n\n\nVideo\nDemo video"
+    "text": "Here are the blog posts through out the course!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAfter finishing 2 C labs\n\n\nMaybe I need to re-get used to software code\n\n\n\n\n\nOct 7, 2026\n\n\nEllen Yu\n\n\n\n\n\n\n\n\n\n\n\n\nLab 3 - Close one but done!\n\n\nTiming of signal is causing issues…\n\n\n\n\n\nSep 23, 2026\n\n\nEllen Yu\n\n\n\n\n\n\n\n\n\n\n\n\nLab 2 - Done!\n\n\nRemember to check power first when debugging…\n\n\n\n\n\nSep 17, 2026\n\n\nEllen Yu\n\n\n\n\n\n\n\n\n\n\n\n\nAfter the First Lab: New Goals of the Semester\n\n\nOkay I need to rethink my goals…\n\n\n\n\n\nSep 8, 2026\n\n\nEllen Yu\n\n\n\n\n\n\n\n\n\n\n\n\nFirst Post: Goals of the Semester\n\n\nListing the goals…\n\n\n\n\n\nAug 31, 2026\n\n\nEllen Yu\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "labs/lab4/lab4.html#design-and-testing-methodology",
-    "href": "labs/lab4/lab4.html#design-and-testing-methodology",
-    "title": "Lab 4 - Digital Audio",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "E155 Portfolio",
+    "section": "",
+    "text": "Ellen Yu is an Engineering student at Harvey Mudd College focusing on Electrical and Computer Engineering. Her interests are in processor architecture, hardware design, and verification. As both an engineer and an artist, she enjoys transforming ideas into thoughtful, functional products."
+  },
+  {
+    "objectID": "labs/lab1/lab1.html",
+    "href": "labs/lab1/lab1.html",
+    "title": "Lab 1 - Board Assembly and Testing",
+    "section": "",
+    "text": "The design for this lab has the following features:\n\n4 switch inputs that control 2 LEDs and a 7-segment display\nAn LED that blinks at 2.4 Hz, controlled by HSOSC (onboard high-speed oscillator) that has a frequency of 48 MHz.\n\nThe four switches are viewed as 4 bits, and the seven-segment display shows the hexadecimal representation of the 4 bits."
+  },
+  {
+    "objectID": "labs/lab1/lab1.html#introduction",
+    "href": "labs/lab1/lab1.html#introduction",
+    "title": "Lab 1 - Board Assembly and Testing",
+    "section": "",
+    "text": "The design for this lab has the following features:\n\n4 switch inputs that control 2 LEDs and a 7-segment display\nAn LED that blinks at 2.4 Hz, controlled by HSOSC (onboard high-speed oscillator) that has a frequency of 48 MHz.\n\nThe four switches are viewed as 4 bits, and the seven-segment display shows the hexadecimal representation of the 4 bits."
+  },
+  {
+    "objectID": "labs/lab1/lab1.html#design-and-testing-methodology",
+    "href": "labs/lab1/lab1.html#design-and-testing-methodology",
+    "title": "Lab 1 - Board Assembly and Testing",
     "section": "Design and Testing Methodology",
-    "text": "Design and Testing Methodology\nThis design uses the timer 15 and timer 16 to control the pitch and duration of each note. Timer 15 controls duration and timer 16 controls note pitch.\nBoth timers use a 80 MHz clock, which is brought up by PPL from a 4 MHz clock. The conversion from note frequency to timer 16 configurations are shown as follows:\n\\(note frequency * 2 = \\frac {clk frequency}{(ARR + 1)(PSC + 1)}\\)\nThe implementation toggles the output at twice the note frequency to produce a square wave at the desired frequency. This implementation chooses PSC to be 79 for timer 16. Since ARR is 16 bits, the highest number it can represent is \\(2^{16}-1\\). Therefore, the highest frequency that this implementation supports is:\n\\(\\frac {80000000}{(1)(80)(2)}\\) = 500000 Hz\nThe lowest note frequency that this implementation supports is:\n\\(\\frac {80000000}{(2^{16})(80)(2)}\\) = 8 Hz\n\n\n\n\n\n\nNoteAll notes frequencies in Für Elise with percent error\n\n\n\n\n\n\n\n\n\n\n\nFigure 1: All notes frequencies in Für Elise with percent error calculation\n\n\n\n\n\n\nAs shown in Figure 1, the implementation is capable of replicating all notes in Für Elise within 1% accuracy.\nThe conversion from note duration to timer 15 configurations are shown as follows:\n\\(duration = \\frac {(ARR)(PSC+1)}{(80000000)}\\)\nIn code implementation divides by 80000 instead as the reference durations are provided in milliseconds. This design chooses PSC to be 7999 for timer 15. Since ARR is 16 bits, the highest number it can represent is \\(2^{16}-1\\).\nThe maximum duration supported by this design is:\n\\(duration = \\frac {(2^{16}-1)(7999+1)}{(80000)}\\) = 6553.5 millisecond\nThe maximum duration supported by this design is:\n\\(duration = \\frac {(0)(7999+1)}{(80000)}\\) = 0 millisecond"
+    "text": "Design and Testing Methodology\nThe HSOSC at a frequency of 48 MHz is used to generate the clock input into the flash_led module. The flash_led module contains a counter that converts the 48 MHz signal into a signal that blinks at 2.4 Hz. The calculation for the counter maximum threshold is shown below:\nIn order for the LED to blink at 2.4 Hz, the signal sent to the LED need to be switching at a frequency of 4.8 Hz between 0 and 1. In order to produce the 4.8 Hz signal, calculate \\(48 MHz / 4.8 Hz\\) to determine that the maximum threshold of the counter needs to be \\(10^7\\). Then, set flash (the signal sent to the LED) to be equal to the opposite value that flash previously hold to blink the LED.\nFor the other LEDs and the seven-segment display, combinational logic is used to map switch inputs to outputs."
   },
   {
-    "objectID": "labs/lab4/lab4.html#technical-documentation",
-    "href": "labs/lab4/lab4.html#technical-documentation",
-    "title": "Lab 4 - Digital Audio",
+    "objectID": "labs/lab1/lab1.html#technical-documentation",
+    "href": "labs/lab1/lab1.html#technical-documentation",
+    "title": "Lab 1 - Board Assembly and Testing",
     "section": "Technical Documentation",
-    "text": "Technical Documentation\nThe source code for the project can be found in the associated Github repository.\n\nSchematic\n\n\n\n\n\n\nNoteSchematic of the Design\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: Schematic of the Design\n\n\n\n\n\n\nThe schematic in Figure 2 shows the physical layout of the MCU to speaker connection. The circuit design is based on the information found on the datasheet of the speaker."
+    "text": "Technical Documentation\nThe source code for the project can be found in the associated Github repository.\n\nBlock Diagram\n\n\n\n\n\n\nNoteBlock Diagram\n\n\n\n\n\n\n\n\n\n\n\nFigure 1: Block Diagram of the System Verilog design\n\n\n\n\n\n\nThe block diagram in Figure 1 shows the overall architecture of the design. The lab1_ey module is the top-level module. It contains the switch-to-LED logic and three submodules: the high-speed oscillator block (HSOSC), flash LED module (flash_led), and the seven-segment display module (seven_seg).\n\n\nSchematic\n\n\n\n\n\n\nNoteSchematic of the seven-segment display\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: Schematic of the seven-segment display\n\n\n\n\n\n\nThe schematic in Figure 2 shows the physical layout of the UPduino to the seven-segment display connection. Each LED segment is connected to the output pin of UPduino using a 150-ohm current-limiting resistor (R) to ensure the output current does not burn the LED.\nThe resistor value calculation is shown below:\n\\(I_D = (V_{DD} - V_{on})/(R_s + R_D)\\)\nAssume \\(R_s\\) to be negligible, and from reading the datasheet, we get that\n\\(V_{dd} = 3.3 V\\)\n\\(V_{forward} = 2.1 V\\) for the LEDs, which is the \\(V_{on}\\) in the calculation.\n\\(I_D\\) is between 5 and 20 mA.\n\\(I_D = 8 mA\\) is chosen for this calculation. Plug in the numbers stated above, we get that \\(R_D = 150 ohm\\)"
   },
   {
-    "objectID": "labs/lab4/lab4.html#conclusion",
-    "href": "labs/lab4/lab4.html#conclusion",
-    "title": "Lab 4 - Digital Audio",
+    "objectID": "labs/lab1/lab1.html#result-and-discussion",
+    "href": "labs/lab1/lab1.html#result-and-discussion",
+    "title": "Lab 1 - Board Assembly and Testing",
+    "section": "Result and Discussion",
+    "text": "Result and Discussion\n\nTestbench Simulation\nThere is one testbench for each module to verify that the design meets all intended objectives.\n\n\n\n\n\n\nNotecounter waveform\n\n\n\n\n\n\n\n\n\n\n\nFigure 3: Waveform simulation of counter module with all tests passing\n\n\n\n\n\n\n\n\n\nFigure 4: Waveform simulation of counter module at reset behavior\n\n\n\n\n\n\n\n\n\nFigure 5: Waveform simulation including counter at maximum counter behavior\n\n\n\n\n\n\n\n\n\n\n\n\nNoteSome tests from testbench code\n\n\n\n\n\n   // testing enable behavior (on)\n        enable = 1'b1;\n        reset = 1'b0;\n        #10;\n        reset = 1'b1;\n        #50;\n        assert (dut.counter == 24'b101)\n            $display(\"PASSED! Counter did not increment at time: %0t.\", $time);\n        else \n            $error(\"FAILED! Counter behaves incorrectly at time: %0t.\", $time); \n        \n        assert (flash == 'b0)\n            $display(\"PASSED! LED is off as expected: %0t.\", $time);\n        else \n            $error(\"FAILED! LED behaves incorrectly at time: %0t.\", $time); \n\n    // testing max counter behavior (LED on)\n        reset = 1'b0;\n        #10;\n        reset = 1'b1;\n        #100000000; // counter reach MAX_threshold\n        assert (dut.counter == 24'b0)\n            $display(\"PASSED! Counter got back to zero as expected: %0t.\", $time);\n        else\n            $display(\"FAILED! Counter has %0d at time: %0t.\", dut.counter, $time);\n        \n        assert (flash == 1'b1)\n            $display(\"PASSED! LED turned on as expected: %0t.\", $time);\n        else\n            $display(\"FAILED! LED has incorrect behavior at time: %0t.\", $time);\n    \n    // then wait another max LED should turn off\n        #100000000;\n        #10;\n        assert (flash == 1'b0)\n            $display(\"PASSED! LED turned off as expected at counter %0d: %0t.\", dut.counter, $time);\n        else\n            $display(\"FAILED! LED has incorrect behavior at time: %0t.\", $time);\n\n\n\nThe waveform simulation and test results of the flash LED module (flash_led) are shown in Figure 3, Figure 5 and Figure 4. This testbench covers the reset behavior, enable behavior, and the behavior at counter maximum threshold. The DUT exhibits expected behavior for all test cases.\n\n\n\n\n\n\nNoteseven-segment waveform\n\n\n\n\n\n\n\n\n\n\n\nFigure 6: Waveform simulation of the seven-segment display\n\n\n\n\n\n\nThe waveform simulation and the test results of the seven-segment display module (seven_seg) are shown in Figure 6. As shown, the testbench covers all 16 possible input combinations and their expected outputs and the DUT passes all test cases.\n\n\n\n\n\n\nNoteTop level waveform\n\n\n\n\n\n\n\n\n\n\n\nFigure 7: Top level with all outputs from submodules passing all tests\n\n\n\n\n\n\n\n\n\nFigure 8: Zoomed-out top level showing LED flashing\n\n\n\n\n\n\nThe top-level testbench is shown in Figure 7 and Figure 8. This testbench tests all cases of the switch-to-LED logic and the DUT does pass all test cases. This testbench also verifies that the connections to submodules are working properly as the flashing LED does exhibit expected behavior.\n\n\n\n\n\n\nNoteHSOSC timing\n\n\n\n\n\n\n\n\n\n\n\nFigure 9\n\n\n\n\n\n\n\n\n\nFigure 10\n\n\n\n\n\n\nThe testbench also shows the HSOSC working in the waveform. The frequency can be calculated as \\(1/ period = 1/(20 ns) = 50 MHz\\). This is close to the expected value of 48 MHz."
+  },
+  {
+    "objectID": "labs/lab1/lab1.html#conclusion",
+    "href": "labs/lab1/lab1.html#conclusion",
+    "title": "Lab 1 - Board Assembly and Testing",
     "section": "Conclusion",
-    "text": "Conclusion\nThe design successfully drove a speaker to play Für Elise.\nI spent 15 hours on this lab."
+    "text": "Conclusion\nThe design successfully blinked an on-board LED using the HSOSC and the switch inputs does correctly control the two LEDs and the seven-segment display.\nI spent 30 hours on this lab."
   },
   {
-    "objectID": "labs/lab4/lab4.html#ai-prototype-summary",
-    "href": "labs/lab4/lab4.html#ai-prototype-summary",
-    "title": "Lab 4 - Digital Audio",
+    "objectID": "labs/lab1/lab1.html#ai-prototype-summary",
+    "href": "labs/lab1/lab1.html#ai-prototype-summary",
+    "title": "Lab 1 - Board Assembly and Testing",
     "section": "AI Prototype summary",
-    "text": "AI Prototype summary\nI used ChatGPT to complete this AI prototype. AI did a great job on extracting the information from the datasheet, as shown in Figure 3. It is much faster to use AI to get information from a reference manual compared to me reading through it. It’s performance is better than Gemini’s performance on generating HDL code.\n\n\n\n\n\n\nNoteAI result\n\n\n\n\n\n\n\n\n\n\n\nFigure 3: Table produced by AI"
+    "text": "AI Prototype summary\n\n\n\n\n\n\nNoteCode produced by AI\n\n\n\n\n\n// Top module name must match your project configuration: led_blink\nmodule led_blink (\n    output logic led\n);\n\n    logic clk_48m;\n\n    // Lattice Radiant Primitive for the High Speed Oscillator\n    HSOSC #(\n        .CLKHF_DIV(\"0b00\")  // \"0b00\" = 48 MHz, \"0b01\" = 24 MHz, \"0b10\" = 12 MHz, \"0b11\" = 6 MHz\n    ) hfosc_inst (\n        .CLKHFPU(1'b1),    // Power up oscillator\n        .CLKHFEN(1'b1),    // Enable clock output\n        .CLKHF  (clk_48m)  // Output clock signal\n    );\n\n    // 48,000,000 Hz / (2 * 2 Hz) = 12,000,000 cycles per toggle\n    localparam int TOGGLE_LIMIT = 12_000_000;\n   \n    logic [$clog2(TOGGLE_LIMIT)-1:0] counter = '0;\n\n    always_ff @(posedge clk_48m) begin\n        if (counter == TOGGLE_LIMIT - 1) begin\n            counter &lt;= '0;\n            led     &lt;= ~led;\n        end else begin\n            counter &lt;= counter + 1'b1;\n        end\n    end\n\nendmodule\n\n\n\nI used Gemini to produce this code. I would say that the quality of the code is very luck dependent. When I tried to do it with AI for the first time, it did not synthesize properly even when I fed the error message back into the LLM for 5 times. After I started a new chat, it made synthesizable code within 2 tries. The ’0 part of the code that AI generated is new to me. The code did not synthesize for the first time because of the HFOSC naming that is specific to the Lattice Radiant software. Radiant outputs “ERROR &lt;35901063&gt; - ../source/impl_1/led_blink.sv(18): instantiating unknown module SB_HFOSC. VERI-1063”. I would let the LLM know what software I am working with first if I use LLM in my workflow."
   },
   {
-    "objectID": "posts/first-lab.html",
-    "href": "posts/first-lab.html",
-    "title": "After the First Lab: New Goals of the Semester",
+    "objectID": "labs/lab3/lab3.html",
+    "href": "labs/lab3/lab3.html",
+    "title": "Lab 3 - Keypad Scanner",
     "section": "",
-    "text": "Yay! I am writing this blog right after I finished by lab report for by first lab! After spending around 30 hours on that lab I decided that the most important goal of this semester is going to be TRY TO DEFEND MY 8 HOURS OF SLEEP EVERY NIGHT\nGoing to try to start looking at the next lab and try to come up with an estimation of how long it will take!"
+    "text": "The design for this lab has the following features:\n\nA dual seven-segment display that shows the last two hexadecimal digit pressed on the keypad, with the most recent entry appearing at the right\nA keypad that takes user input with each press recorded exactly once\nThe display value should not update if additional keys are pressed while still holding down the first key\n\n\n\n\n\n\n\nNoteDemo video\n\n\n\n\n\n\n\nVideo\nDemo video"
+  },
+  {
+    "objectID": "labs/lab3/lab3.html#introduction",
+    "href": "labs/lab3/lab3.html#introduction",
+    "title": "Lab 3 - Keypad Scanner",
+    "section": "",
+    "text": "The design for this lab has the following features:\n\nA dual seven-segment display that shows the last two hexadecimal digit pressed on the keypad, with the most recent entry appearing at the right\nA keypad that takes user input with each press recorded exactly once\nThe display value should not update if additional keys are pressed while still holding down the first key\n\n\n\n\n\n\n\nNoteDemo video\n\n\n\n\n\n\n\nVideo\nDemo video"
+  },
+  {
+    "objectID": "labs/lab3/lab3.html#design-and-testing-methodology",
+    "href": "labs/lab3/lab3.html#design-and-testing-methodology",
+    "title": "Lab 3 - Keypad Scanner",
+    "section": "Design and Testing Methodology",
+    "text": "Design and Testing Methodology\nThe HSOSC at a frequency of 48 MHz is used to generate the clock input into the multiplex counter and the scanning module. From researching, it was learned that the threshold frequency at which human will not be able to detect blinking is 60 Hz. Therefore, the multiplex counter is used to reduce the 48 MHz clock down to a 60 Hz slower clock.\nA synchronizer is used to handle asynchronous column reading, and the same synchronizer is applied to the already synchronous row readings to ensure the column and row values match when mapping the readings to the key values.\n\n\n\n\n\n\nNoteMain FSM\n\n\n\n\n\n\n\n\n\n\n\nFigure 1: State transition diagram and next state logic of the main FSM\n\n\n\n\n\n\n\n\n\n\n\n\nNoteDebounce FSM\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: State transition diagram and next state logic of the debounce FSM\n\n\n\n\n\n\nThe design includes various finite state machines that communicate with each other. Two of the main canonical FSMs implemented are the main FSM that controls the update logic of the seven-segment display and the debounce FSM that handles switch bouncing. The state transition diagram and the next state logic of the two FSMs are shown in Figure 1 and Figure 2.\nThe debounce module outputs the d_en signal that indicates at least one key is actually being pressed and the switch is no longer bouncing. This signal allows the main FSM to transition to the PRESSED stage. In the PRESSED state, the main FSM send a update signal to the seven-segment display input selection module(sev_seg_input) to update the input into the seven segment display. This design divides up the signals cleanly and only requires FSMs with at most 3 states. Other designs may involve fewer finite state machines with more states, which can cause the state transition conditions to be more complicated.\nThe debounce module handles switch debouncing by blocking the main FSM from updating the display.The main FSM will only update the display if the debounce module set d_en signal to high. Debounce module sets d_en only when the input switch has been pressed for long enough. This debounce module handles switch debounce at the cost of filtering out super short clicks. Physically, any press would last for a time that is way longer than the switch bouncing period, therefore this design does work successfully."
+  },
+  {
+    "objectID": "labs/lab3/lab3.html#technical-documentation",
+    "href": "labs/lab3/lab3.html#technical-documentation",
+    "title": "Lab 3 - Keypad Scanner",
+    "section": "Technical Documentation",
+    "text": "Technical Documentation\nThe source code for the project can be found in the associated Github repository.\n\nBlock Diagram\n\n\n\n\n\n\nNoteTop Level Block Diagram\n\n\n\n\n\n\n\n\n\n\n\nFigure 3: Block Diagram of the Top Level\n\n\n\n\n\n\nThe block diagram in Figure 3 shows the overall architecture of the design. The lab3_ey module is the top level module.\n\n\n\n\n\n\nNoteBlock Diagram of Synchronizer\n\n\n\n\n\n\n\n\n\n\n\nFigure 4: Block Diagram of the Synchronizer Module\n\n\n\n\n\n\nThe block diagram of the synchronizer module is shown in Figure 4.\n\n\n\n\n\n\nNoteBlock Diagram of Reading to Key Encoding Module\n\n\n\n\n\n\n\n\n\n\n\nFigure 5: Block Diagram of the Reading to Key Encoding Module\n\n\n\n\n\n\nThe block diagram of the module that converts row and column reading into 16-bit one-hot encoding and binary value (row_col_to_binary) is shown in Figure 5.\n\n\nSchematic\n\n\n\n\n\n\nNoteSchematic of the Design\n\n\n\n\n\n\n\n\n\n\n\nFigure 6: Schematic of the Design\n\n\n\n\n\n\nThe schematic in Figure 6 shows the physical layout of the UPduino to the seven-segment display and keypad connection. The calculation of the resistor values can be found in lab 2 report."
+  },
+  {
+    "objectID": "labs/lab3/lab3.html#result-and-discussion",
+    "href": "labs/lab3/lab3.html#result-and-discussion",
+    "title": "Lab 3 - Keypad Scanner",
+    "section": "Result and Discussion",
+    "text": "Result and Discussion\n\nTestbench Simulation\nThere are a total of 6 testbenches written, testing functionality of the top-level module and the new modules. The modules that were already tested from previous labs are not retested.\n\n\n\n\n\n\nNotetop level waveform\n\n\n\n\n\n\n\n\n\n\n\nFigure 7: Top-level module with all tests passing\n\n\n\n\n\n\n\n\n\nFigure 8: Waveform simulation\n\n\n\n\n\n\n\n\n\nFigure 9: Waveform simulation\n\n\n\n\n\n\n\n\n\nFigure 10: Waveform simulation\n\n\n\n\n\n\nThe waveform simulation and test results of the top-level module are shown in Figure 8, Figure 9, Figure 10 and Figure 7. This testbench includes a simulated key press with switch bouncing. The DUT exhibits expected behavior for all test cases.\n\n\n\n\n\n\nNoteDebounce module waveform\n\n\n\n\n\n\n\n\n\n\n\nFigure 11: Debounce module with all tests passing\n\n\n\n\n\n\n\n\n\nFigure 12: Waveform simulation\n\n\n\n\n\n\n\n\n\nFigure 13: Waveform simulation\n\n\n\n\n\n\nThe waveform simulation and test results of the debounce module are shown in Figure 12, Figure 13 and Figure 11. The DUT exhibits expected behavior for all test cases.\n\n\n\n\n\n\nNoteMain FSM module waveform\n\n\n\n\n\n\n\n\n\n\n\nFigure 14: main FSM module with all tests passing\n\n\n\n\n\n\n\n\n\nFigure 15: Waveform simulation\n\n\n\n\n\n\n\n\n\nFigure 16: Waveform simulation\n\n\n\n\n\n\nThe waveform simulation and test results of the main FSM module are shown in Figure 15, Figure 16 and Figure 14. The DUT exhibits expected behavior for all test cases.\n\n\n\n\n\n\nNoteReading to encoding module waveform\n\n\n\n\n\n\n\n\n\n\n\nFigure 17: Reading to encoding module with all tests passing\n\n\n\n\n\n\n\n\n\nFigure 18: Waveform simulation\n\n\n\n\n\n\nThe waveform simulation and test results of the reading to encoding module (row_col_to_binary) are shown in Figure 18 and Figure 17. The DUT exhibits expected behavior for all test cases.\n\n\n\n\n\n\nNoteSeven-segment display input selection module waveform\n\n\n\n\n\n\n\n\n\n\n\nFigure 19: sev_seg_input module with all tests passing\n\n\n\n\n\n\n\n\n\nFigure 20: Waveform simulation\n\n\n\n\n\n\nThe waveform simulation and test results of the seven-segment display input selection module are shown in Figure 20 and Figure 19. The DUT exhibits expected behavior for all test cases.\n\n\n\n\n\n\nNoteSynchronizer module waveform\n\n\n\n\n\n\n\n\n\n\n\nFigure 21: Synchronizer with all tests passing\n\n\n\n\n\n\n\n\n\nFigure 22: Waveform simulation\n\n\n\n\n\n\nThe waveform simulation and test results of the synchronizer module are shown in Figure 22 and Figure 21. The DUT exhibits expected behavior for all test cases.\n\n\n\n\n\n\nNoteDebounce module waveform\n\n\n\n\n\n\n\n\n\n\n\nFigure 23: Synthesizer output reporting no latches or tristate buffers\n\n\n\n\n\n\nSynthesizer output in Figure 23 showing that design has no latches and no tristate buffers."
+  },
+  {
+    "objectID": "labs/lab3/lab3.html#conclusion",
+    "href": "labs/lab3/lab3.html#conclusion",
+    "title": "Lab 3 - Keypad Scanner",
+    "section": "Conclusion",
+    "text": "Conclusion\nThe design successfully drived a time-multiplexed seven-segment display based on keypad input.\nI spent 38 hours on this lab."
+  },
+  {
+    "objectID": "labs/lab3/lab3.html#ai-prototype-summary",
+    "href": "labs/lab3/lab3.html#ai-prototype-summary",
+    "title": "Lab 3 - Keypad Scanner",
+    "section": "AI Prototype summary",
+    "text": "AI Prototype summary\nI used Gemini to produce the code. I attempted the AI prototype and the quality is not great. The code that was first produced had some typos in it so the synthesize fails. I then fed back the error message into the LLM for around 5 more times and the LLM is still not able to fix it. This was the case for both prompts.\nThe LLM was also using functions in the produced code. I am not familiar with the use of this syntax therefore it was hard for me to understand the produced code."
+  },
+  {
+    "objectID": "labs/lab5/lab5.html",
+    "href": "labs/lab5/lab5.html",
+    "title": "Lab 5 - Interrupts",
+    "section": "",
+    "text": "The design for this lab senses quadrature encoder pulses and convert those pulses into a motor velocity. It displays the motor speed in rps and the direction of velocity.\n\n\n\n\n\n\nNoteDemo video for the design\n\n\n\n\n\n\n\nVideo\nDemo video"
+  },
+  {
+    "objectID": "labs/lab5/lab5.html#introduction",
+    "href": "labs/lab5/lab5.html#introduction",
+    "title": "Lab 5 - Interrupts",
+    "section": "",
+    "text": "The design for this lab senses quadrature encoder pulses and convert those pulses into a motor velocity. It displays the motor speed in rps and the direction of velocity.\n\n\n\n\n\n\nNoteDemo video for the design\n\n\n\n\n\n\n\nVideo\nDemo video"
+  },
+  {
+    "objectID": "labs/lab5/lab5.html#design-and-testing-methodology",
+    "href": "labs/lab5/lab5.html#design-and-testing-methodology",
+    "title": "Lab 5 - Interrupts",
+    "section": "Design and Testing Methodology",
+    "text": "Design and Testing Methodology\nThis design uses the timer 2 to control the time gap between each display of velocity and direction. This design chooses to display the velocity every 1 second. The internal clock used is 80 MHz, with a prescalar value of 7999, one second passes when the counter value goes from 0 to 9999. Therefore, print logic is executed every time when the timer counter values gets to 9999.\nInterrupt is trigger whenever an edge is detected in either signal A or B and the interrupt handler increments the count. Therefore, each pulse from the motor encoder causes the count variable to increment four times. Since count gets reset every 1 second and the datasheet states that the motor emits 408 pulses per revolution, the velocity of the motor can be calculated by:\n\\(speed = count / (4 * 408)\\)\nIn terms of determining the direction of the motor, since the two signals A and B are 90 degrees out of phase, the direction the motor spins can be found by comparing whether A == B at the time of interrupt based on which signal’s edge triggered the interrupt, as shown in Figure 1.\n\n\n\n\n\n\nNoteWave signal showing A and B when motor moves in different directions\n\n\n\n\n\n\n\n\n\n\n\nFigure 1: Wave signal showing A and B when motor moves in different directions\n\n\n\n\n\n\nHaving the interrupt to trigger at each edge of both signal A and B allows for a more precise measurement of velocity since the count value gets incremented at four evenly spaced times within one pulse time of the motor due to the fact that A and B are 90 degrees out of phase with each other.\nAt high speeds, using polling may cause some of the pulses to be missed because of the fact that printing the outputs takes a relative long time. Interrupt would still be able to capture the pulses at high speed, with the cost of using more hardware. The internet suggests that the print statement takes around 5 microsecond. If the motor is spinning at 2 rev per second, there would be 816 pulses within one second. The timing between these pulses would be given by \\(1/816 = 1.2 ms\\). This means that some of the pulses might be missed because the software is still printing. Interrupt would not have this issue and remain functional."
+  },
+  {
+    "objectID": "labs/lab5/lab5.html#technical-documentation",
+    "href": "labs/lab5/lab5.html#technical-documentation",
+    "title": "Lab 5 - Interrupts",
+    "section": "Technical Documentation",
+    "text": "Technical Documentation\nThe source code for the project can be found in the associated Github repository.\n\nSchematic\nThe schematic in Figure 2 shows the physical layout of the MCU to motor connection. The circuit design is based on the information found on the datasheet of the motor.\n\n\n\n\n\n\nNoteSchematic of the Design\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: Schematic of the Design\n\n\n\n\n\n\nThe schematic in Figure 3 shows the flow of code logic.\n\n\n\n\n\n\nNoteFlowchart of the Design\n\n\n\n\n\n\n\n\n\n\n\nFigure 3: Flowchart of the Design"
+  },
+  {
+    "objectID": "labs/lab5/lab5.html#conclusion",
+    "href": "labs/lab5/lab5.html#conclusion",
+    "title": "Lab 5 - Interrupts",
+    "section": "Conclusion",
+    "text": "Conclusion\nThe design successfully display the motor velocity and direction.\nI spent 10 hours on this lab."
+  },
+  {
+    "objectID": "labs/lab5/lab5.html#ai-prototype-summary",
+    "href": "labs/lab5/lab5.html#ai-prototype-summary",
+    "title": "Lab 5 - Interrupts",
+    "section": "AI Prototype summary",
+    "text": "AI Prototype summary\nI used ChatGPT to produce the code and it was able to build in segger. The LLM did not set up a clock because the prompt did not ask for the specifics of when the interface need to display values. I kept all my variables at 32 bits while the code produced by LLM has the variables at different bit length."
+  },
+  {
+    "objectID": "posts/first-post.html",
+    "href": "posts/first-post.html",
+    "title": "First Post: Goals of the Semester",
+    "section": "",
+    "text": "Hi! This is going to be my first post on the Blog! I am hoping to experiment more about how to design as well as use microprocessors to build cool things. Time to pick up all the System Verilog syntax that left my brain right after E85…"
+  },
+  {
+    "objectID": "posts/first-post.html#some-goals-of-this-semester-include",
+    "href": "posts/first-post.html#some-goals-of-this-semester-include",
+    "title": "First Post: Goals of the Semester",
+    "section": "Some goals of this semester include:",
+    "text": "Some goals of this semester include:\n\nGetting more familiar with Git/Github\nWrite better styled code\nTry to build something fun!"
   },
   {
     "objectID": "posts/post lab 2/second-lab.html",
