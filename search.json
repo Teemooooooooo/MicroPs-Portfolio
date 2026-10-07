@@ -25,14 +25,14 @@
     "href": "labs/lab5/lab5.html",
     "title": "Lab 5 - Interrupts",
     "section": "",
-    "text": "The design for this lab senses quadrature encoder pulses and convert those pulses into a motor velocity. It displays the motor speed in rps and the direction of velocity."
+    "text": "The design for this lab senses quadrature encoder pulses and convert those pulses into a motor velocity. It displays the motor speed in rps and the direction of velocity.\n\n\n\n\n\n\nNoteDemo video for the design\n\n\n\n\n\n\n\nVideo\nDemo video"
   },
   {
     "objectID": "labs/lab5/lab5.html#introduction",
     "href": "labs/lab5/lab5.html#introduction",
     "title": "Lab 5 - Interrupts",
     "section": "",
-    "text": "The design for this lab senses quadrature encoder pulses and convert those pulses into a motor velocity. It displays the motor speed in rps and the direction of velocity."
+    "text": "The design for this lab senses quadrature encoder pulses and convert those pulses into a motor velocity. It displays the motor speed in rps and the direction of velocity.\n\n\n\n\n\n\nNoteDemo video for the design\n\n\n\n\n\n\n\nVideo\nDemo video"
   },
   {
     "objectID": "labs/lab5/lab5.html#design-and-testing-methodology",
