@@ -12,6 +12,11 @@ draft: false
 The design for this lab senses quadrature encoder pulses and convert those pulses into a motor velocity. It displays the motor speed in rps and the direction of velocity. 
 
 
+::: {.callout-note collapse="true"}
+## Demo video for the design
+![Demo video](demo.mov)
+:::
+
 ## Design and Testing Methodology
 This design uses the timer 2 to control the time gap between each display of velocity and direction. This design chooses to display the velocity every 1 second. The internal clock used is 80 MHz, with a prescalar value of 7999, one second passes when the counter value goes from 0 to 9999. Therefore, print logic is executed every time when the timer counter values gets to 9999. 
 
