@@ -1,0 +1,13 @@
+---
+title: "After finishing 2 C labs"
+description: "Maybe I need to re-get used to software code"
+author: "Ellen Yu"
+date: "10/7/26"
+categories:
+  - reflection
+draft: false
+--- 
+
+Hi! This is the blog post for lab 4 and 5 because I did not have time to do one for last week when I finished lab 4. I spent many hours working on research instead and now I am done with my interrupts test suite for RISC-V :)
+
+Anyways, lab 4 and 5 had a focus of coding in C. It took me quite a bit of time to get my head around how to code in software again after spending a whole semester, the summer and all the previous labs writing hardware code. I will try to write cleaner C code for project - I have not put much effort to keeping my code clean for lab 4 and lab 5, which has been causing problems when I try to debug. I also need to get more used to the segger debug tool because it is harder to just logic out what was wrong with my mode by looking at hardware behavior here :(
