@@ -49,7 +49,7 @@ The schematic in @fig-schematic shows the physical layout of the MCU to motor co
 ![Schematic of the Design](images/schematic.png){#fig-schematic}
 ::: 
  
-The schematic in @fig-flowchart shows the flow of code logic.
+The flowchart in @fig-flowchart shows the flow of code logic.
 
 ::: {.callout-note collapse="true"}
 ## Flowchart of the Design
