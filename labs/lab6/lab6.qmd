@@ -40,6 +40,8 @@ The annotated oscilloscope trace in @fig-scope_trace shows four signals: CE, SCK
 ![Oscilloscope trace](images/scope_trace.png){#fig-scope_trace}
 ::: 
 
+Based on the datasheet of DS1722, the maximum SCLK frequency it supports is 5 MHz. The baud rate is set to be 1.25 MHz, which is within the supported range of DS1722. 
+
 ## Conclusion
 
 The design successfully display the temperature reading and adjust temperature reading resolution based on user input. However, this design does have a lag between user inpput and resolution adjustment. 
