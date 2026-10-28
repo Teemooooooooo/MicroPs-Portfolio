@@ -298,7 +298,7 @@
     "href": "labs/lab6/lab6.html#technical-documentation",
     "title": "Lab 6 - The Internet of Things and Serial Peripheral Interface",
     "section": "Technical Documentation",
-    "text": "Technical Documentation\nThe source code for the project can be found in the associated Github repository.\n\nSchematic\nThe schematic in Figure 1 shows the physical layout of the MCU to sensor connection. The circuit design is based on the information found on the datasheet of the sensor.\n\n\n\n\n\n\nNoteSchematic of the Design\n\n\n\n\n\n\n\n\n\n\n\nFigure 1: Schematic of the Design\n\n\n\n\n\n\n\n\nOscilloscope trace\nThe annotated oscilloscope trace in Figure 2 shows four signals: CE, SCK, SDO and SDI. It captures a full SPI write and read transaction.\n\n\n\n\n\n\nNoteOscilloscope trace\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: Oscilloscope trace"
+    "text": "Technical Documentation\nThe source code for the project can be found in the associated Github repository.\n\nSchematic\nThe schematic in Figure 1 shows the physical layout of the MCU to sensor connection. The circuit design is based on the information found on the datasheet of the sensor.\n\n\n\n\n\n\nNoteSchematic of the Design\n\n\n\n\n\n\n\n\n\n\n\nFigure 1: Schematic of the Design\n\n\n\n\n\n\n\n\nOscilloscope trace\nThe annotated oscilloscope trace in Figure 2 shows four signals: CE, SCK, SDO and SDI. It captures a full SPI write and read transaction.\n\n\n\n\n\n\nNoteOscilloscope trace\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: Oscilloscope trace\n\n\n\n\n\n\nBased on the datasheet of DS1722, the maximum SCLK frequency it supports is 5 MHz. The baud rate is set to be 1.25 MHz, which is within the supported range of DS1722."
   },
   {
     "objectID": "labs/lab6/lab6.html#conclusion",
