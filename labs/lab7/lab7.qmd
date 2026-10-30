@@ -1,0 +1,11 @@
+---
+title: "Lab 7: The Advanced Encryption Standard"
+description: "AES on FPGA"
+author: "Ellen Yu"
+date: "10/30/26"
+categories:
+  - reflection
+  - labreport
+draft: false
+--- 
+
